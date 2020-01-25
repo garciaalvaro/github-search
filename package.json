@@ -1,9 +1,26 @@
 {
-  "name": "search-github-app",
-  "version": "0.0.0",
-  "description": "Small app that searches through GitHub repositories",
-  "main": "index.js",
-  "scripts": {},
-  "author": "Alvaro Garcia",
-  "license": "MIT"
+	"name": "search-github-repositories",
+	"version": "0.1.0",
+	"description": "Small app that searches through GitHub repositories",
+	"scripts": {
+		"server:dev": "pm2-dev start server.js",
+		"server:prod": "pm2 start server.js",
+		"server-stop:prod": "pm2 stop server.js",
+		"start": "npm run server:prod",
+		"stop": "npm run server-stop:prod",
+		"dev": "npm run server:dev"
+	},
+	"dependencies": {
+		"express": "^4.17.1",
+		"pm2": "^4.2.3"
+	},
+	"devDependencies": {
+		"eslint": "^6.8.0",
+		"eslint-config-prettier": "^6.9.0",
+		"eslint-plugin-prettier": "^3.1.2",
+		"prettier": "^1.19.1"
+	},
+	"main": "server.js",
+	"author": "Alvaro Garcia",
+	"license": "MIT"
 }
