@@ -10,7 +10,7 @@ import { getPrevDateFrom } from "/utils/getPrevDateFrom.js";
  */
 export class App {
 	constructor() {
-		this.$root = document.getElementById("root");
+		this.$root = document.querySelector("#root");
 		this.today = new Date();
 		this.timeout = null;
 
@@ -22,6 +22,8 @@ export class App {
 
 		this.registerEventListeners();
 		this.render();
+
+		this.$chars_left = document.querySelector("#chars-left");
 	}
 
 	/**
@@ -79,7 +81,27 @@ export class App {
 		// From gs-keywords component
 		this.$root.addEventListener("keywordsUpdated", e => {
 			this.keywords = e.detail;
+
 			this.updateResults();
+
+			if (this.keywords.length === 2) {
+				this.$chars_left.setAttribute("tag", "P");
+				this.$chars_left.setAttribute("text", "Enter 1 more character");
+			} else if (this.keywords.length === 1) {
+				this.$chars_left.setAttribute("tag", "P");
+				this.$chars_left.setAttribute(
+					"text",
+					"Enter 2 more characters"
+				);
+			} else if (this.keywords.length === 0) {
+				this.$chars_left.setAttribute("tag", "P");
+				this.$chars_left.setAttribute(
+					"text",
+					"Enter some text in the search field above"
+				);
+			} else {
+				this.$chars_left.setAttribute("text", "");
+			}
 		});
 
 		// From gs-languages component
@@ -116,6 +138,7 @@ export class App {
 				<gs-languages></gs-languages>
 
 				<gs-message
+					id="chars-left"
 					text="Enter some text in the search field above."
 					tag="P"
 				></gs-message>
