@@ -21,6 +21,7 @@ export class App {
 				<gs-keywords></gs-keywords>
 				<gs-last-update></gs-last-update>
 				<gs-min-stars></gs-min-stars>
+				<gs-languages></gs-languages>
 			</main>
 		`;
 	}
