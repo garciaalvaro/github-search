@@ -13,6 +13,7 @@ export class App {
 		this.$root = document.querySelector("#root");
 		this.today = new Date();
 		this.timeout = null;
+		this.fetch_id = 0;
 
 		this.keywords = "";
 		this.language = "";
@@ -45,11 +46,51 @@ export class App {
 
 		// Set a throttle so the callback is not called before the
 		// given time.
-		this.timeout = setTimeout(() => {
+		this.timeout = setTimeout(async () => {
 			this.timeout = null;
 
 			this.$loading.setAttribute("text", "Loading...");
+
+			const { data, id, too_many_requests } = await this.fetchData();
+
+			// Check if the id from the fetch call is not the same
+			// as the current one (this could happen if a new fetch
+			// was triggered before this one resolved).
+			if (id !== this.fetch_id) return;
+
+			this.$loading.setAttribute("text", "");
+
+			if (data.items.length === 0) {
+				this.$no_results.setAttribute("text", "No results");
+			}
+
+			console.log(data.items);
 		}, time);
+	}
+
+	/**
+	 * Fetch the data
+	 */
+	async fetchData() {
+		this.fetch_id++;
+
+		const url = this.getQuery();
+		const id = this.fetch_id;
+
+		// Fetch the data
+		const response = await fetch(url);
+
+		if (!response.ok) {
+			return {
+				data: null,
+				id,
+				too_many_requests: response.status === 403
+			};
+		}
+
+		const data = await response.json();
+
+		return { data, id, too_many_requests: false };
 	}
 
 	/**
