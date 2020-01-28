@@ -165,7 +165,9 @@ export class App {
 		this.$root.addEventListener("pageUpdated", e => {
 			this.page = e.detail;
 
-			this.updateResults();
+			// When updating from the pagination buttons,
+			// we don't need to throttle.
+			this.updateResults(0);
 		});
 
 		this.$root.addEventListener("filterUpdated", e => {
