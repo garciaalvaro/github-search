@@ -18,6 +18,7 @@ export class App {
 	render() {
 		this.$root.innerHTML = `
 			<main id="content">
+				<gs-keywords></gs-keywords>
 			</main>
 		`;
 	}
