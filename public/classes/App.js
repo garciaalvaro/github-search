@@ -33,6 +33,9 @@ export class App {
 			clearTimeout(this.timeout);
 		}
 
+		// If keywords has less than 3 characters do not continue
+		if (this.keywords.length < 3) return;
+
 		// Set a throttle so the callback is not called before the
 		// given time.
 		this.timeout = setTimeout(() => {
