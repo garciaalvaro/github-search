@@ -218,30 +218,22 @@ export class App {
 				<gs-message
 					id="chars-left"
 					text="Enter some text in the search field above."
-					tag="P"
 				></gs-message>
 
 				<gs-message
 					id="loading"
-					text=""
-					tag="P"
 				></gs-message>
 
 				<gs-message
 					id="no-results"
-					text=""
-					tag="P"
 				></gs-message>
 
 				<gs-message
 					id="too-many-requests"
-					text=""
-					tag="P"
 				></gs-message>
 
 				<gs-message
 					id="items-found"
-					text=""
 					tag="H3"
 				></gs-message>
 
