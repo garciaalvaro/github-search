@@ -24,6 +24,7 @@ export class App {
 		this.render();
 
 		this.$chars_left = document.querySelector("#chars-left");
+		this.$loading = document.querySelector("#loading");
 	}
 
 	/**
@@ -35,6 +36,8 @@ export class App {
 			clearTimeout(this.timeout);
 		}
 
+		this.$loading.setAttribute("text", "");
+
 		// If keywords has less than 3 characters do not continue
 		if (this.keywords.length < 3) return;
 
@@ -42,6 +45,8 @@ export class App {
 		// given time.
 		this.timeout = setTimeout(() => {
 			this.timeout = null;
+
+			this.$loading.setAttribute("text", "Loading...");
 		}, time);
 	}
 
@@ -140,6 +145,12 @@ export class App {
 				<gs-message
 					id="chars-left"
 					text="Enter some text in the search field above."
+					tag="P"
+				></gs-message>
+
+				<gs-message
+					id="loading"
+					text=""
 					tag="P"
 				></gs-message>
 
