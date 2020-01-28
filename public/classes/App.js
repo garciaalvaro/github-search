@@ -157,47 +157,32 @@ export class App {
 	 * Register the event listeners from the children components
 	 */
 	registerEventListeners() {
-		// From gs-keywords component
-		this.$root.addEventListener("keywordsUpdated", e => {
-			this.keywords = e.detail;
+		this.$root.addEventListener("filterUpdated", e => {
+			const { value, prop_name } = e.detail;
 
+			this[prop_name] = value;
+			console.log(prop_name, value);
 			this.updateResults();
 
-			let message = "";
+			if (prop_name === "keywords") {
+				let message = "";
 
-			switch (this.keywords.length) {
-				case 0:
-					message = "Enter some text in the search field above";
-					break;
+				switch (value.length) {
+					case 0:
+						message = "Enter some text in the search field above";
+						break;
 
-				case 1:
-					message = "Enter 2 more characters";
-					break;
+					case 1:
+						message = "Enter 2 more characters";
+						break;
 
-				case 2:
-					message = "Enter 1 more character";
-					break;
+					case 2:
+						message = "Enter 1 more character";
+						break;
+				}
+
+				this.$chars_left.setAttribute("text", message);
 			}
-
-			this.$chars_left.setAttribute("text", message);
-		});
-
-		// From gs-languages component
-		this.$root.addEventListener("languageUpdated", e => {
-			this.language = e.detail;
-			this.updateResults();
-		});
-
-		// From gs-last-update component
-		this.$root.addEventListener("lastUpdateUpdated", e => {
-			this.last_update = e.detail;
-			this.updateResults();
-		});
-
-		// From gs-min-stars component
-		this.$root.addEventListener("minStarsUpdated", e => {
-			this.min_stars = e.detail;
-			this.updateResults();
 		});
 	}
 

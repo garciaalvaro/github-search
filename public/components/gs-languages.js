@@ -26,9 +26,12 @@ export class Languages extends HTMLElement {
 		// When a button is clicked, we dispatch an event with its value
 		this.shadowRoot.addEventListener("click", e => {
 			this.dispatchEvent(
-				new CustomEvent("languageUpdated", {
+				new CustomEvent("filterUpdated", {
 					bubbles: true,
-					detail: e.target.dataset.language
+					detail: {
+						value: e.target.dataset.language,
+						prop_name: "language"
+					}
 				})
 			);
 		});

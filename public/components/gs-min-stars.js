@@ -13,9 +13,9 @@ export class MinStars extends HTMLElement {
 		// When the select changes, we dispatch an event with the new value
 		this.shadowRoot.addEventListener("input", e => {
 			this.dispatchEvent(
-				new CustomEvent("minStarsUpdated", {
+				new CustomEvent("filterUpdated", {
 					bubbles: true,
-					detail: e.target.value
+					detail: { value: e.target.value, prop_name: "min_stars" }
 				})
 			);
 		});

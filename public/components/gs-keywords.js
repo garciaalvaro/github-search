@@ -15,9 +15,9 @@ export class Keywords extends HTMLElement {
 		// When the input changes, we dispatch an event with the new value
 		this.shadowRoot.addEventListener("input", e => {
 			this.dispatchEvent(
-				new CustomEvent("keywordsUpdated", {
+				new CustomEvent("filterUpdated", {
 					bubbles: true,
-					detail: e.target.value
+					detail: { value: e.target.value, prop_name: "keywords" }
 				})
 			);
 		});
