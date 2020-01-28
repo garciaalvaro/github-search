@@ -30,6 +30,8 @@ export class App {
 					text="Enter some text in the search field above."
 					tag="P"
 				></gs-message>
+
+				<gs-results></gs-results>
 			</main>
 		`;
 	}
