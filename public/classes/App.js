@@ -28,6 +28,7 @@ export class App {
 		this.$loading = document.querySelector("#loading");
 		this.$no_results = document.querySelector("#no-results");
 		this.$items_found = document.querySelector("#items-found");
+		this.$too_many_requests = document.querySelector("#too-many-requests");
 		this.$results = document.querySelector("#results");
 	}
 
@@ -43,6 +44,7 @@ export class App {
 		this.$loading.setAttribute("text", "Waiting...");
 		this.$no_results.setAttribute("text", "");
 		this.$items_found.setAttribute("text", "");
+		this.$too_many_requests.setAttribute("text", "");
 		this.$results.updateItems([]);
 
 		// If keywords has less than 3 characters do not continue
@@ -66,15 +68,29 @@ export class App {
 			if (this.timeout) return;
 
 			this.$loading.setAttribute("text", "");
-			this.$items_found.setAttribute(
-				"text",
-				`${data.total_count.toLocaleString()} repositor${
-					data.total_count > 1 ? "ies" : "y"
-				} found`
-			);
+
+			if (too_many_requests) {
+				this.$too_many_requests.setAttribute(
+					"text",
+					"It looks like too many requests were made. Please try again in a minute."
+				);
+			}
+
+			if (!data) {
+				this.$results.updateItems(items);
+
+				return;
+			}
 
 			if (data.total_count === 0) {
 				this.$no_results.setAttribute("text", "No results");
+			} else {
+				this.$items_found.setAttribute(
+					"text",
+					`${data.total_count.toLocaleString()} repositor${
+						data.total_count > 1 ? "ies" : "y"
+					} found`
+				);
 			}
 
 			const items = prepareItems(data.items);
@@ -210,6 +226,12 @@ export class App {
 
 				<gs-message
 					id="no-results"
+					text=""
+					tag="P"
+				></gs-message>
+
+				<gs-message
+					id="too-many-requests"
 					text=""
 					tag="P"
 				></gs-message>
