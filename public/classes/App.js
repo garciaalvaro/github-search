@@ -12,6 +12,7 @@ export class App {
 	constructor() {
 		this.$root = document.getElementById("root");
 		this.today = new Date();
+		this.timeout = null;
 
 		this.keywords = "";
 		this.language = "";
@@ -21,6 +22,22 @@ export class App {
 
 		this.registerEventListeners();
 		this.render();
+	}
+
+	/**
+	 * Handle user updates and throttle the call to fetch data
+	 */
+	updateResults(time = 1000) {
+		// If the timeout is running reset it
+		if (this.timeout) {
+			clearTimeout(this.timeout);
+		}
+
+		// Set a throttle so the callback is not called before the
+		// given time.
+		this.timeout = setTimeout(() => {
+			this.timeout = null;
+		}, time);
 	}
 
 	/**
@@ -59,21 +76,25 @@ export class App {
 		// From gs-keywords component
 		this.$root.addEventListener("keywordsUpdated", e => {
 			this.keywords = e.detail;
+			this.updateResults();
 		});
 
 		// From gs-languages component
 		this.$root.addEventListener("languageUpdated", e => {
 			this.language = e.detail;
+			this.updateResults();
 		});
 
 		// From gs-last-update component
 		this.$root.addEventListener("lastUpdateUpdated", e => {
 			this.last_update = e.detail;
+			this.updateResults();
 		});
 
 		// From gs-min-stars component
 		this.$root.addEventListener("minStarsUpdated", e => {
 			this.min_stars = e.detail;
+			this.updateResults();
 		});
 	}
 
