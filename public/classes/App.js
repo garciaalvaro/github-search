@@ -19,6 +19,7 @@ export class App {
 		this.$root.innerHTML = `
 			<main id="content">
 				<gs-keywords></gs-keywords>
+				<gs-last-update></gs-last-update>
 			</main>
 		`;
 	}
