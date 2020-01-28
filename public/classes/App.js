@@ -12,6 +12,7 @@ export class App {
 		this.keywords = "";
 		this.language = "";
 		this.last_update = "";
+		this.min_stars = "";
 
 		this.registerEventListeners();
 		this.render();
@@ -34,6 +35,11 @@ export class App {
 		// From gs-last-update component
 		this.$root.addEventListener("lastUpdateUpdated", e => {
 			this.last_update = e.detail;
+		});
+
+		// From gs-min-stars component
+		this.$root.addEventListener("minStarsUpdated", e => {
+			this.min_stars = e.detail;
 		});
 	}
 
