@@ -20,6 +20,7 @@ export class App {
 			<main id="content">
 				<gs-keywords></gs-keywords>
 				<gs-last-update></gs-last-update>
+				<gs-min-stars></gs-min-stars>
 			</main>
 		`;
 	}
