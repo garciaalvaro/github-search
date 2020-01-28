@@ -25,6 +25,7 @@ export class App {
 
 		this.$chars_left = document.querySelector("#chars-left");
 		this.$loading = document.querySelector("#loading");
+		this.$no_results = document.querySelector("#no-results");
 	}
 
 	/**
@@ -37,6 +38,7 @@ export class App {
 		}
 
 		this.$loading.setAttribute("text", "");
+		this.$no_results.setAttribute("text", "");
 
 		// If keywords has less than 3 characters do not continue
 		if (this.keywords.length < 3) return;
@@ -150,6 +152,12 @@ export class App {
 
 				<gs-message
 					id="loading"
+					text=""
+					tag="P"
+				></gs-message>
+
+				<gs-message
+					id="no-results"
 					text=""
 					tag="P"
 				></gs-message>
