@@ -12,6 +12,16 @@ export class Keywords extends HTMLElement {
 
 		this.attachShadow({ mode: "open" });
 
+		// When the input changes, we dispatch an event with the new value
+		this.shadowRoot.addEventListener("input", e => {
+			this.dispatchEvent(
+				new CustomEvent("keywordsUpdated", {
+					bubbles: true,
+					detail: e.target.value
+				})
+			);
+		});
+
 		this.render();
 	}
 

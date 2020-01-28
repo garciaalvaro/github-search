@@ -9,7 +9,21 @@ export class App {
 	constructor() {
 		this.$root = document.getElementById("root");
 
+		this.keywords = "";
+
+		this.registerEventListeners();
 		this.render();
+	}
+
+	/**
+	 * Register the event listeners from the children components
+	 */
+	registerEventListeners() {
+		// From gs-keywords component
+		this.$root.addEventListener("keywordsUpdated", e => {
+			this.keywords = e.detail;
+			console.log(this.keywords);
+		});
 	}
 
 	/**
