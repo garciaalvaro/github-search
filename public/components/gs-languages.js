@@ -23,6 +23,16 @@ export class Languages extends HTMLElement {
 
 		this.attachShadow({ mode: "open" });
 
+		// When a button is clicked, we dispatch an event with its value
+		this.shadowRoot.addEventListener("click", e => {
+			this.dispatchEvent(
+				new CustomEvent("languageUpdated", {
+					bubbles: true,
+					detail: e.target.dataset.language
+				})
+			);
+		});
+
 		this.render();
 	}
 

@@ -10,6 +10,7 @@ export class App {
 		this.$root = document.getElementById("root");
 
 		this.keywords = "";
+		this.language = "";
 
 		this.registerEventListeners();
 		this.render();
@@ -22,7 +23,11 @@ export class App {
 		// From gs-keywords component
 		this.$root.addEventListener("keywordsUpdated", e => {
 			this.keywords = e.detail;
-			console.log(this.keywords);
+		});
+
+		// From gs-languages component
+		this.$root.addEventListener("languageUpdated", e => {
+			this.language = e.detail;
 		});
 	}
 
