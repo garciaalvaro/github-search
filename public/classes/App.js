@@ -159,24 +159,23 @@ export class App {
 
 			this.updateResults();
 
-			if (this.keywords.length === 2) {
-				this.$chars_left.setAttribute("tag", "P");
-				this.$chars_left.setAttribute("text", "Enter 1 more character");
-			} else if (this.keywords.length === 1) {
-				this.$chars_left.setAttribute("tag", "P");
-				this.$chars_left.setAttribute(
-					"text",
-					"Enter 2 more characters"
-				);
-			} else if (this.keywords.length === 0) {
-				this.$chars_left.setAttribute("tag", "P");
-				this.$chars_left.setAttribute(
-					"text",
-					"Enter some text in the search field above"
-				);
-			} else {
-				this.$chars_left.setAttribute("text", "");
+			let message = "";
+
+			switch (this.keywords.length) {
+				case 0:
+					message = "Enter some text in the search field above";
+					break;
+
+				case 1:
+					message = "Enter 2 more characters";
+					break;
+
+				case 2:
+					message = "Enter 1 more character";
+					break;
 			}
+
+			this.$chars_left.setAttribute("text", message);
 		});
 
 		// From gs-languages component
