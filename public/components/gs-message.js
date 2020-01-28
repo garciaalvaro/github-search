@@ -36,6 +36,8 @@ export class Message extends HTMLElement {
 		// Sanitize the text
 		text = sanitize(text);
 
+		if (!text) return "";
+
 		switch (tag) {
 			case "H1":
 				return `<h1>${text}</h1>`;
