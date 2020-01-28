@@ -6,11 +6,25 @@ import { sanitize } from "/utils/sanitize.js";
  * This Web Component renders a message.
  */
 export class Message extends HTMLElement {
+	/**
+	 * Indicate which attributes should trigger attributeChangedCallback
+	 */
+	static get observedAttributes() {
+		return ["text"];
+	}
+
 	constructor() {
 		super();
 
 		this.attachShadow({ mode: "open" });
 
+		this.render();
+	}
+
+	/**
+	 * When the observed attributes change, call render
+	 */
+	attributeChangedCallback() {
 		this.render();
 	}
 
@@ -33,8 +47,10 @@ export class Message extends HTMLElement {
 				return `<h4>${text}</h4>`;
 			case "P":
 				return `<p>${text}</p>`;
-			default:
+			case "SPAN":
 				return `<span>${text}</span>`;
+			default:
+				return "";
 		}
 	}
 
