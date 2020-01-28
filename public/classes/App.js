@@ -27,6 +27,7 @@ export class App {
 		this.$chars_left = document.querySelector("#chars-left");
 		this.$loading = document.querySelector("#loading");
 		this.$no_results = document.querySelector("#no-results");
+		this.$items_found = document.querySelector("#items-found");
 		this.$results = document.querySelector("#results");
 	}
 
@@ -41,6 +42,7 @@ export class App {
 
 		this.$loading.setAttribute("text", "Waiting...");
 		this.$no_results.setAttribute("text", "");
+		this.$items_found.setAttribute("text", "");
 		this.$results.updateItems([]);
 
 		// If keywords has less than 3 characters do not continue
@@ -64,8 +66,14 @@ export class App {
 			if (this.timeout) return;
 
 			this.$loading.setAttribute("text", "");
+			this.$items_found.setAttribute(
+				"text",
+				`${data.total_count.toLocaleString()} repositor${
+					data.total_count > 1 ? "ies" : "y"
+				} found`
+			);
 
-			if (data.items.length === 0) {
+			if (data.total_count === 0) {
 				this.$no_results.setAttribute("text", "No results");
 			}
 
@@ -204,6 +212,12 @@ export class App {
 					id="no-results"
 					text=""
 					tag="P"
+				></gs-message>
+
+				<gs-message
+					id="items-found"
+					text=""
+					tag="H3"
 				></gs-message>
 
 				<gs-results
