@@ -58,7 +58,7 @@ export class Pagination extends HTMLElement {
 		const prev_disabled = page === 1;
 		const next_disabled = items_found <= page * this.items_per_page;
 
-		if (items_found === 0) {
+		if (items_found === 0 || items_found <= this.items_per_page) {
 			this.shadowRoot.innerHTML = "";
 
 			return;
