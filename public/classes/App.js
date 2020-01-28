@@ -1,3 +1,4 @@
+import { prepareItems } from "/utils/prepareItems.js";
 import { encode } from "/utils/encode.js";
 import { getPrevDateFrom } from "/utils/getPrevDateFrom.js";
 
@@ -13,7 +14,6 @@ export class App {
 		this.$root = document.querySelector("#root");
 		this.today = new Date();
 		this.timeout = null;
-		this.fetch_id = 0;
 
 		this.keywords = "";
 		this.language = "";
@@ -27,6 +27,7 @@ export class App {
 		this.$chars_left = document.querySelector("#chars-left");
 		this.$loading = document.querySelector("#loading");
 		this.$no_results = document.querySelector("#no-results");
+		this.$results = document.querySelector("#results");
 	}
 
 	/**
@@ -38,11 +39,16 @@ export class App {
 			clearTimeout(this.timeout);
 		}
 
-		this.$loading.setAttribute("text", "");
+		this.$loading.setAttribute("text", "Waiting...");
 		this.$no_results.setAttribute("text", "");
+		this.$results.updateItems([]);
 
 		// If keywords has less than 3 characters do not continue
-		if (this.keywords.length < 3) return;
+		if (this.keywords.length < 3) {
+			this.$loading.setAttribute("text", "");
+
+			return;
+		}
 
 		// Set a throttle so the callback is not called before the
 		// given time.
@@ -51,12 +57,11 @@ export class App {
 
 			this.$loading.setAttribute("text", "Loading...");
 
-			const { data, id, too_many_requests } = await this.fetchData();
+			const { data, too_many_requests } = await this.fetchData();
 
-			// Check if the id from the fetch call is not the same
-			// as the current one (this could happen if a new fetch
-			// was triggered before this one resolved).
-			if (id !== this.fetch_id) return;
+			// Check if there is a timeout running. This could happen
+			// if a new timeout was triggered before this fetch resolved.
+			if (this.timeout) return;
 
 			this.$loading.setAttribute("text", "");
 
@@ -64,7 +69,9 @@ export class App {
 				this.$no_results.setAttribute("text", "No results");
 			}
 
-			console.log(data.items);
+			const items = prepareItems(data.items);
+
+			this.$results.updateItems(items);
 		}, time);
 	}
 
@@ -72,10 +79,7 @@ export class App {
 	 * Fetch the data
 	 */
 	async fetchData() {
-		this.fetch_id++;
-
 		const url = this.getQuery();
-		const id = this.fetch_id;
 
 		// Fetch the data
 		const response = await fetch(url);
@@ -83,14 +87,13 @@ export class App {
 		if (!response.ok) {
 			return {
 				data: null,
-				id,
 				too_many_requests: response.status === 403
 			};
 		}
 
 		const data = await response.json();
 
-		return { data, id, too_many_requests: false };
+		return { data, too_many_requests: false };
 	}
 
 	/**
@@ -203,7 +206,9 @@ export class App {
 					tag="P"
 				></gs-message>
 
-				<gs-results></gs-results>
+				<gs-results
+					id="results"
+				></gs-results>
 			</main>
 		`;
 	}

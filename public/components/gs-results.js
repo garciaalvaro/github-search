@@ -15,6 +15,15 @@ export class Results extends HTMLElement {
 	}
 
 	/**
+	 * Update the items prop and render
+	 */
+	updateItems(items = []) {
+		this.items = items;
+
+		this.render();
+	}
+
+	/**
 	 * Render the component HTML in its Shadow DOM
 	 */
 	render() {
