@@ -1,3 +1,6 @@
+import { encode } from "/utils/encode.js";
+import { getPrevDateFrom } from "/utils/getPrevDateFrom.js";
+
 /**
  * App
  *
@@ -8,14 +11,45 @@
 export class App {
 	constructor() {
 		this.$root = document.getElementById("root");
+		this.today = new Date();
 
 		this.keywords = "";
 		this.language = "";
 		this.last_update = "";
 		this.min_stars = "";
+		this.page = 1;
 
 		this.registerEventListeners();
 		this.render();
+	}
+
+	/**
+	 * Generate a query to be used to fetch data from the GitHub API
+	 */
+	getQuery() {
+		return [
+			// Base
+			"https://api.github.com/search/repositories?q=",
+
+			// Keywords
+			encode(this.keywords),
+
+			// Language
+			this.language ? `+language:${encode(this.language)}` : "",
+
+			// Last Update
+			this.last_update
+				? `+pushed:>${encode(
+						getPrevDateFrom(this.last_update, this.today)
+				  )}`
+				: "",
+
+			// Stars
+			this.min_stars ? `+stars:>${encode(this.min_stars)}` : "",
+
+			// Page
+			this.page > 1 ? `&page=${encode(page)}` : ""
+		].join("");
 	}
 
 	/**
