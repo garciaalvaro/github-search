@@ -14,6 +14,7 @@ export class App {
 		this.$root = document.querySelector("#root");
 		this.today = new Date();
 		this.timeout = null;
+		this.fetch_id = 0;
 
 		this.keywords = "";
 		this.language = "";
@@ -54,6 +55,9 @@ export class App {
 			return;
 		}
 
+		this.fetch_id++;
+		const fetch_id_used = this.fetch_id;
+
 		// Set a throttle so the callback is not called before the
 		// given time.
 		this.timeout = setTimeout(async () => {
@@ -63,9 +67,9 @@ export class App {
 
 			const { data, too_many_requests } = await this.fetchData();
 
-			// Check if there is a timeout running. This could happen
+			// If the id is not the latest one, return. This could happen
 			// if a new timeout was triggered before this fetch resolved.
-			if (this.timeout) return;
+			if (this.fetch_id !== fetch_id_used) return;
 
 			this.$loading.setAttribute("text", "");
 
@@ -77,7 +81,7 @@ export class App {
 			}
 
 			if (!data) {
-				this.$results.updateItems(items);
+				this.$results.updateItems([]);
 
 				return;
 			}
