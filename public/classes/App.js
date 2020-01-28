@@ -31,6 +31,7 @@ export class App {
 		this.$items_found = document.querySelector("#items-found");
 		this.$too_many_requests = document.querySelector("#too-many-requests");
 		this.$results = document.querySelector("#results");
+		this.$pagination = document.querySelector("#pagination");
 	}
 
 	/**
@@ -86,20 +87,24 @@ export class App {
 				return;
 			}
 
-			if (data.total_count === 0) {
+			const { items, total_count } = data;
+
+			if (total_count === 0) {
 				this.$no_results.setAttribute("text", "No results");
 			} else {
 				this.$items_found.setAttribute(
 					"text",
-					`${data.total_count.toLocaleString()} repositor${
-						data.total_count > 1 ? "ies" : "y"
+					`${total_count.toLocaleString()} repositor${
+						total_count > 1 ? "ies" : "y"
 					} found`
 				);
 			}
 
-			const items = prepareItems(data.items);
+			const items_prepared = prepareItems(items);
 
-			this.$results.updateItems(items);
+			this.$results.updateItems(items_prepared);
+
+			this.$pagination.setAttribute("items_found", total_count);
 		}, time);
 	}
 
@@ -149,7 +154,7 @@ export class App {
 			this.min_stars ? `+stars:>${encode(this.min_stars)}` : "",
 
 			// Page
-			this.page > 1 ? `&page=${encode(page)}` : ""
+			this.page > 1 ? `&page=${encode(this.page)}` : ""
 		].join("");
 	}
 
@@ -157,11 +162,21 @@ export class App {
 	 * Register the event listeners from the children components
 	 */
 	registerEventListeners() {
+		this.$root.addEventListener("pageUpdated", e => {
+			this.page = e.detail;
+
+			this.updateResults();
+		});
+
 		this.$root.addEventListener("filterUpdated", e => {
 			const { value, prop_name } = e.detail;
 
 			this[prop_name] = value;
-			console.log(prop_name, value);
+
+			this.page = 1;
+			this.$pagination.setAttribute("page", 1);
+			this.$pagination.setAttribute("items_found", 0);
+
 			this.updateResults();
 
 			if (prop_name === "keywords") {
@@ -232,6 +247,12 @@ export class App {
 
 				<gs-results
 					id="results"
+				></gs-results>
+
+				<gs-pagination
+					id="pagination"
+					page="1"
+					items_found="0"
 				></gs-results>
 			</main>
 		`;
