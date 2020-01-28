@@ -11,6 +11,7 @@ export class App {
 
 		this.keywords = "";
 		this.language = "";
+		this.last_update = "";
 
 		this.registerEventListeners();
 		this.render();
@@ -28,6 +29,11 @@ export class App {
 		// From gs-languages component
 		this.$root.addEventListener("languageUpdated", e => {
 			this.language = e.detail;
+		});
+
+		// From gs-last-update component
+		this.$root.addEventListener("lastUpdateUpdated", e => {
+			this.last_update = e.detail;
 		});
 	}
 

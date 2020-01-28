@@ -10,6 +10,16 @@ export class LastUpdate extends HTMLElement {
 
 		this.attachShadow({ mode: "open" });
 
+		// When the select changes, we dispatch an event with the new value
+		this.shadowRoot.addEventListener("input", e => {
+			this.dispatchEvent(
+				new CustomEvent("lastUpdateUpdated", {
+					bubbles: true,
+					detail: e.target.value
+				})
+			);
+		});
+
 		this.render();
 	}
 
