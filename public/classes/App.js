@@ -19,9 +19,17 @@ export class App {
 		this.$root.innerHTML = `
 			<main id="content">
 				<gs-keywords></gs-keywords>
+
 				<gs-last-update></gs-last-update>
+
 				<gs-min-stars></gs-min-stars>
+
 				<gs-languages></gs-languages>
+
+				<gs-message
+					text="Enter some text in the search field above."
+					tag="P"
+				></gs-message>
 			</main>
 		`;
 	}
