@@ -1,0 +1,14 @@
+/**
+ * Layout
+ */
+
+body
+{
+	font-family: Arial, sans-serif;
+	letter-spacing: .01em;
+	color: var(--color);
+	fill: var(--color_07);
+	background-color: var(--background_color);
+	overflow-x: hidden;
+	line-height: 1.5;
+}
