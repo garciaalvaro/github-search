@@ -1,4 +1,4 @@
-import { icon_search } from "/utils/icons.js";
+import { icon_search } from "../utils/icons.js";
 
 /**
  * gs-keywords

@@ -1,6 +1,6 @@
-import { prepareItems } from "/utils/prepareItems.js";
-import { encode } from "/utils/encode.js";
-import { getPrevDateFrom } from "/utils/getPrevDateFrom.js";
+import { prepareItems } from "../utils/prepareItems.js";
+import { encode } from "../utils/encode.js";
+import { getPrevDateFrom } from "../utils/getPrevDateFrom.js";
 
 /**
  * App
