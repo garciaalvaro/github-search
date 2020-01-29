@@ -43,7 +43,7 @@ export class Languages extends HTMLElement {
 	 * Render the component HTML in its Shadow DOM
 	 */
 	render() {
-		this.shadowRoot.innerHTML = this._languages
+		const languages = this._languages
 			.map(
 				language => `
 					<button
@@ -52,5 +52,51 @@ export class Languages extends HTMLElement {
 				`
 			)
 			.join("");
+
+		this.shadowRoot.innerHTML =
+			`
+			<style>
+				button,
+				button:focus,
+				button:hover
+				{
+					background: none;
+					box-shadow: none;
+					border: none;
+					color: inherit;
+					letter-spacing: inherit;
+				}
+
+				button
+				{
+					cursor: pointer;
+					padding: .4em .5em;
+					font-size: .95em;
+					position: relative;
+				}
+
+				button:before
+				{
+					content: "";
+					height: .3em;
+					position: absolute;
+					left: .5em;
+					right: .5em;
+					bottom: .2em;
+					background-color: var(--accent_color_07);
+					transform: scaleY(0);
+					transform-origin: bottom;
+					transition: transform .15s ease, opacity .15s;
+					opacity: 0;
+				}
+
+				button:hover:before,
+				button.is-active:before
+				{
+					transform: scaleY(1);
+					opacity: 1;
+				}
+			</style>
+		` + languages;
 	}
 }

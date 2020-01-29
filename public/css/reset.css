@@ -20,21 +20,6 @@ h6 { font-size: 0.816rem; }
 
 input { color: inherit; }
 
-button { cursor: pointer; }
-
-button,
-button:focus,
-button:hover
-{
-	background: none;
-	box-shadow: none;
-	border: none;
-	color: inherit;
-	font-size: inherit;
-	padding: 0;
-	letter-spacing: inherit;
-}
-
 ::-webkit-input-placeholder {
 	color: inherit;
 	opacity: .3;
