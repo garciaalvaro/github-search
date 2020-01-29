@@ -209,6 +209,13 @@ export class App {
 	render() {
 		this.$root.innerHTML = `
 			<main id="content">
+				<h1
+					id="title"
+					class="theme-dark"
+				>
+					<a href="#">GitHub Search</a>
+				</h1>
+
 				<div
 					id="container-search"
 					class="container container--content-centered theme-dark"

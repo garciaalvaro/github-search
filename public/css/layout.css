@@ -13,6 +13,24 @@ body
 	line-height: 1.5;
 }
 
+#title
+{
+	color: var(--color_07);
+	font-weight: normal;
+	font-size: 1em;
+	padding: 1em;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	transition: color .15s ease;
+}
+
+#title:hover
+{
+	color: var(--color);
+}
+
 #content
 {
 	margin: 0 auto;
