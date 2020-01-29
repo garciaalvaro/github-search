@@ -23,27 +23,23 @@ body
 
 #container-search
 {
+	position: relative;
 	padding: 5rem 0;
-	display: flex;
-	justify-content: center;
+}
+
+#container-search:before
+{
+	content: "";
+	position: absolute;
+	top: 0;
+	left: -100vw;
+	width: 200vw;
+	height: 100%;
 	background-color: var(--accent_color);
+	z-index: -1;
 }
 
 #container-filters
 {
 	padding: 2rem 0;
-	display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
-#container-filters gs-last-update,
-#container-filters gs-min-stars
-{
-	flex: 1 1 25%;
-}
-
-#container-filters gs-languages
-{
-	flex: 1 1 50%;
 }

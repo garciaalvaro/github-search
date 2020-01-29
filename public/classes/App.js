@@ -209,35 +209,64 @@ export class App {
 	render() {
 		this.$root.innerHTML = `
 			<main id="content">
-				<div id="container-search">
+				<div
+					id="container-search"
+					class="container container--content-centered"
+				>
 					<gs-keywords></gs-keywords>
 				</div>
 
-				<div id="container-filters">
-					<gs-last-update></gs-last-update>
+				<div
+					id="container-filters"
+					class="container container--content-fluid"
+				>
+					<gs-last-update
+						class="column column--width-25"
+					></gs-last-update>
 
-					<gs-min-stars></gs-min-stars>
+					<gs-min-stars
+						class="column column--width-25"
+					></gs-min-stars>
 
-					<gs-languages></gs-languages>
+					<gs-languages
+						class="column column--width-50"
+					></gs-languages>
 				</div>
 
-				<div id="container-status">
+				<div
+					id="container-status"
+					class="container"
+				>
 					<gs-message
 						id="chars-left"
 						text="Enter some text in the search field above."
+						class="message"
 					></gs-message>
 
-					<gs-message id="loading"></gs-message>
+					<gs-message
+						id="loading"
+						class="message"
+					></gs-message>
 
-					<gs-message id="no-results"></gs-message>
+					<gs-message
+						id="no-results"
+						class="message"
+					></gs-message>
 
-					<gs-message id="too-many-requests"></gs-message>
+					<gs-message
+						id="too-many-requests"
+						class="message"
+					></gs-message>
 				</div>
 
-				<div id="container-results">
+				<div
+					id="container-results"
+					class="container container--content-column"
+				>
 					<gs-message
 						id="items-found"
 						tag="H3"
+						class="message"
 					></gs-message>
 
 					<gs-results id="results"></gs-results>
