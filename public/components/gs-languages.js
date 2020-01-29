@@ -38,6 +38,17 @@ export class Languages extends HTMLElement {
 					}
 				})
 			);
+
+			const $buttons = this.shadowRoot.querySelectorAll("button");
+
+			// Update .is-active class and remove it from the previous one
+			[...$buttons].forEach($button => {
+				if ($button.dataset.language === language) {
+					$button.classList.toggle("is-active");
+				} else {
+					$button.classList.remove("is-active");
+				}
+			});
 		});
 
 		this.render();
@@ -65,6 +76,7 @@ export class Languages extends HTMLElement {
 				button:hover
 				{
 					background: none;
+					outline: none;
 					box-shadow: none;
 					border: none;
 					color: inherit;
@@ -94,7 +106,12 @@ export class Languages extends HTMLElement {
 					opacity: 0;
 				}
 
-				button:hover:before,
+				button:hover:before
+				{
+					transform: scaleY(1);
+					opacity: .7;
+				}
+
 				button.is-active:before
 				{
 					transform: scaleY(1);
