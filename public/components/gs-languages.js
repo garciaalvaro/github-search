@@ -37,7 +37,7 @@ export class Languages extends HTMLElement {
 				})
 			);
 
-			const $buttons = this.querySelectorAll("button");
+			const $buttons = this.getElementsByTagName("button");
 
 			// Update .is-active class and remove it from the previous one
 			[...$buttons].forEach($button => {

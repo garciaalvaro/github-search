@@ -11,7 +11,7 @@ import { getPrevDateFrom } from "../utils/getPrevDateFrom.js";
  */
 export class App {
 	constructor() {
-		this.$root = document.querySelector("#root");
+		this.$root = document.getElementById("root");
 		this.today = new Date();
 		this.timeout = null;
 		this.fetch_id = 0;
@@ -25,13 +25,13 @@ export class App {
 		this.registerEventListeners();
 		this.render();
 
-		this.$chars_left = document.querySelector("#chars-left");
-		this.$loading = document.querySelector("#loading");
-		this.$no_results = document.querySelector("#no-results");
-		this.$items_found = document.querySelector("#items-found");
-		this.$too_many_requests = document.querySelector("#too-many-requests");
-		this.$results = document.querySelector("#results");
-		this.$pagination = document.querySelector("#pagination");
+		this.$chars_left = document.getElementById("chars-left");
+		this.$loading = document.getElementById("loading");
+		this.$no_results = document.getElementById("no-results");
+		this.$items_found = document.getElementById("items-found");
+		this.$too_many_requests = document.getElementById("too-many-requests");
+		this.$results = document.getElementById("results");
+		this.$pagination = document.getElementById("pagination");
 	}
 
 	/**
