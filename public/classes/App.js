@@ -1,6 +1,6 @@
-import { prepareItems } from "/utils/prepareItems.js";
-import { encode } from "/utils/encode.js";
-import { getPrevDateFrom } from "/utils/getPrevDateFrom.js";
+import { prepareItems } from "../utils/prepareItems.js";
+import { encode } from "../utils/encode.js";
+import { getPrevDateFrom } from "../utils/getPrevDateFrom.js";
 
 /**
  * App
@@ -11,7 +11,7 @@ import { getPrevDateFrom } from "/utils/getPrevDateFrom.js";
  */
 export class App {
 	constructor() {
-		this.$root = document.querySelector("#root");
+		this.$root = document.getElementById("root");
 		this.today = new Date();
 		this.timeout = null;
 		this.fetch_id = 0;
@@ -25,13 +25,95 @@ export class App {
 		this.registerEventListeners();
 		this.render();
 
-		this.$chars_left = document.querySelector("#chars-left");
-		this.$loading = document.querySelector("#loading");
-		this.$no_results = document.querySelector("#no-results");
-		this.$items_found = document.querySelector("#items-found");
-		this.$too_many_requests = document.querySelector("#too-many-requests");
-		this.$results = document.querySelector("#results");
-		this.$pagination = document.querySelector("#pagination");
+		this.$chars_left = document.getElementById("chars-left");
+		this.$loading = document.getElementById("loading");
+		this.$no_results = document.getElementById("no-results");
+		this.$items_found = document.getElementById("items-found");
+		this.$error = document.getElementById("error");
+		this.$results = document.getElementById("results");
+		this.$pagination = document.getElementById("pagination");
+	}
+
+	/**
+	 * Utility to update the "text" attribute of a given element
+	 */
+	updateText($element, text = "") {
+		$element.setAttribute("text", text);
+	}
+
+	/**
+	 * Update the current status messages
+	 */
+	updateStatus(status = "", payload = null) {
+		switch (status) {
+			case "THROTTLE_PREPARE":
+				this.updateText(this.$loading);
+				this.updateText(this.$no_results);
+				this.updateText(this.$items_found);
+				this.updateText(this.$error);
+
+				break;
+
+			case "THROTTLE":
+				this.updateText(this.$loading, "Waiting...");
+
+				break;
+
+			case "FETCH":
+				this.updateText(this.$loading, "Loading...");
+
+				break;
+
+			case "FETCH_FAILED":
+				this.updateText(this.$loading);
+				this.updateText(
+					this.$error,
+					"It looks like there was an error getting the data. " +
+						"Please try again in a some time."
+				);
+
+				break;
+
+			case "FETCH_FORBIDDEN":
+				this.updateText(this.$loading);
+				this.updateText(
+					this.$error,
+					"It looks like too many requests were made. " +
+						"Please try again in a minute."
+				);
+
+				break;
+
+			case "UPDATE_CHARACTERS":
+				this.updateText(
+					this.$chars_left,
+					payload === 0
+						? "Enter some text in the search field above"
+						: payload === 1
+						? "Enter 2 more characters"
+						: payload === 2
+						? "Enter 1 more character"
+						: ""
+				);
+
+				break;
+
+			case "UPDATE_RESULTS":
+				this.updateText(this.$loading);
+
+				if (payload) {
+					this.updateText(
+						this.$items_found,
+						`${payload.toLocaleString()} repositor${
+							payload > 1 ? "ies" : "y"
+						} found`
+					);
+				} else {
+					this.updateText(this.$no_results, "No results");
+				}
+
+				break;
+		}
 	}
 
 	/**
@@ -39,32 +121,25 @@ export class App {
 	 */
 	updateResults(time = 1000) {
 		// If the timeout is running reset it
-		if (this.timeout) {
-			clearTimeout(this.timeout);
-		}
+		clearTimeout(this.timeout);
 
-		this.$loading.setAttribute("text", "Waiting...");
-		this.$no_results.setAttribute("text", "");
-		this.$items_found.setAttribute("text", "");
-		this.$too_many_requests.setAttribute("text", "");
-		this.$results.updateItems([]);
+		this.$results.items = [];
+
+		this.updateStatus("THROTTLE_PREPARE");
 
 		// If keywords has less than 3 characters do not continue
-		if (this.keywords.length < 3) {
-			this.$loading.setAttribute("text", "");
+		if (this.keywords.length < 3) return;
 
-			return;
-		}
+		this.updateStatus("THROTTLE");
 
 		this.fetch_id++;
 		const fetch_id_used = this.fetch_id;
 
-		// Set a throttle so the callback is not called before the
-		// given time.
+		// Set a throttle so the callback is not called before the given time.
 		this.timeout = setTimeout(async () => {
 			this.timeout = null;
 
-			this.$loading.setAttribute("text", "Loading...");
+			this.updateStatus("FETCH");
 
 			const { data, too_many_requests } = await this.fetchData();
 
@@ -72,39 +147,31 @@ export class App {
 			// if a new timeout was triggered before this fetch resolved.
 			if (this.fetch_id !== fetch_id_used) return;
 
-			this.$loading.setAttribute("text", "");
-
 			if (too_many_requests) {
-				this.$too_many_requests.setAttribute(
-					"text",
-					"It looks like too many requests were made. Please try again in a minute."
-				);
+				this.updateStatus("FETCH_FORBIDDEN");
+
+				return;
 			}
 
 			if (!data) {
-				this.$results.updateItems([]);
+				this.updateStatus("FETCH_FAILED");
 
 				return;
 			}
 
 			const { items, total_count } = data;
 
-			if (total_count === 0) {
-				this.$no_results.setAttribute("text", "No results");
-			} else {
-				this.$items_found.setAttribute(
-					"text",
-					`${total_count.toLocaleString()} repositor${
-						total_count > 1 ? "ies" : "y"
-					} found`
-				);
+			if (total_count > 0) {
+				this.updateStatus("UPDATE_RESULTS", total_count);
+
+				this.$results.items = prepareItems(items);
+
+				this.$pagination.setAttribute("items_found", total_count);
+
+				return;
 			}
 
-			const items_prepared = prepareItems(items);
-
-			this.$results.updateItems(items_prepared);
-
-			this.$pagination.setAttribute("items_found", total_count);
+			this.updateStatus("UPDATE_RESULTS", total_count);
 		}, time);
 	}
 
@@ -115,7 +182,9 @@ export class App {
 		const url = this.getQuery();
 
 		// Fetch the data
-		const response = await fetch(url);
+		const response = await fetch(url).catch(error =>
+			this.updateStatus("FETCH_FAILED")
+		);
 
 		if (!response.ok) {
 			return {
@@ -174,31 +243,15 @@ export class App {
 			const { value, prop_name } = e.detail;
 
 			this[prop_name] = value;
-
 			this.page = 1;
+
 			this.$pagination.setAttribute("page", 1);
 			this.$pagination.setAttribute("items_found", 0);
 
 			this.updateResults();
 
 			if (prop_name === "keywords") {
-				let message = "";
-
-				switch (value.length) {
-					case 0:
-						message = "Enter some text in the search field above";
-						break;
-
-					case 1:
-						message = "Enter 2 more characters";
-						break;
-
-					case 2:
-						message = "Enter 1 more character";
-						break;
-				}
-
-				this.$chars_left.setAttribute("text", message);
+				this.updateStatus("UPDATE_CHARACTERS", value.length);
 			}
 		});
 	}
@@ -250,22 +303,18 @@ export class App {
 					<gs-message
 						id="chars-left"
 						text="Enter some text in the search field above."
-						class="message"
 					></gs-message>
 
 					<gs-message
 						id="loading"
-						class="message"
 					></gs-message>
 
 					<gs-message
 						id="no-results"
-						class="message"
 					></gs-message>
 
 					<gs-message
-						id="too-many-requests"
-						class="message"
+						id="error"
 					></gs-message>
 				</div>
 
@@ -276,7 +325,6 @@ export class App {
 					<gs-message
 						id="items-found"
 						tag="H3"
-						class="message"
 					></gs-message>
 
 					<gs-results id="results"></gs-results>

@@ -1,2 +1,2 @@
-import "/init/register-components.js";
-import "/init/render-app.js";
+import "./init/register-components.js";
+import "./init/render-app.js";
