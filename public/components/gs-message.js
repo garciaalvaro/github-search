@@ -16,8 +16,6 @@ export class Message extends HTMLElement {
 	constructor() {
 		super();
 
-		this.attachShadow({ mode: "open" });
-
 		this.render();
 	}
 
@@ -47,22 +45,20 @@ export class Message extends HTMLElement {
 				return `<h3>${text}</h3>`;
 			case "H4":
 				return `<h4>${text}</h4>`;
-			case "P":
-				return `<p>${text}</p>`;
 			case "SPAN":
 				return `<span>${text}</span>`;
 			default:
-				return "";
+				return `<p>${text}</p>`;
 		}
 	}
 
 	/**
-	 * Render the component HTML in its Shadow DOM
+	 * Render the component HTML
 	 */
 	render() {
-		const text = this.getAttribute("text");
-		const tag = this.getAttribute("tag");
+		const text = this.getAttribute("text") || "";
+		const tag = this.getAttribute("tag") || "";
 
-		this.shadowRoot.innerHTML = this.getHtml(tag, text);
+		this.innerHTML = this.getHtml(tag, text);
 	}
 }

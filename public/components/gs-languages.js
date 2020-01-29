@@ -21,36 +21,56 @@ export class Languages extends HTMLElement {
 			"C#"
 		];
 
-		this.attachShadow({ mode: "open" });
+		this.addEventListener("click", e => {
+			const { language } = e.target.dataset;
 
-		// When a button is clicked, we dispatch an event with its value
-		this.shadowRoot.addEventListener("click", e => {
+			if (!language) return;
+
+			// When a button is clicked, we dispatch an event with its value
 			this.dispatchEvent(
 				new CustomEvent("filterUpdated", {
 					bubbles: true,
 					detail: {
-						value: e.target.dataset.language,
+						value: language,
 						prop_name: "language"
 					}
 				})
 			);
+
+			const $buttons = this.querySelectorAll("button");
+
+			// Update .is-active class and remove it from the previous one
+			[...$buttons].forEach($button => {
+				if ($button.dataset.language === language) {
+					$button.classList.toggle("btn--is-active");
+				} else {
+					$button.classList.remove("btn--is-active");
+				}
+			});
 		});
 
 		this.render();
 	}
 
 	/**
-	 * Render the component HTML in its Shadow DOM
+	 * Render the component HTML
 	 */
 	render() {
-		this.shadowRoot.innerHTML = this._languages
+		const languages = this._languages
 			.map(
 				language => `
 					<button
 						data-language="${language}"
+						class="btn btn--underlined"
 					>${language}</button>
 				`
 			)
 			.join("");
+
+		this.innerHTML = `
+			<div class="container container--content-fluid">
+				${languages}
+			</div>
+		`;
 	}
 }

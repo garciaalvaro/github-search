@@ -1,10 +1,17 @@
-# Search GitHub Repositories
+# GitHub Search
 
 Small app that provides a UI to search GitHub repositories using the [GitHub Search API](https://developer.github.com/v3/search/).
 
 ---
 
 ## Changelog
+
+#### 0.3.0
+
+- Added styling to the page and components
+- Switched components shadow DOM to light DOM, to facilitate the use of shared styles
+- Added BEM approach to element CSS classes
+- Improved HTML layout and semantics
 
 #### 0.2.0
 

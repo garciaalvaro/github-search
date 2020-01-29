@@ -165,7 +165,9 @@ export class App {
 		this.$root.addEventListener("pageUpdated", e => {
 			this.page = e.detail;
 
-			this.updateResults();
+			// When updating from the pagination buttons,
+			// we don't need to throttle.
+			this.updateResults(0);
 		});
 
 		this.$root.addEventListener("filterUpdated", e => {
@@ -202,58 +204,80 @@ export class App {
 	}
 
 	/**
-	 * Render the component HTML in its Shadow DOM
+	 * Render the component HTML
 	 */
 	render() {
 		this.$root.innerHTML = `
 			<main id="content">
-				<gs-keywords></gs-keywords>
+				<div
+					id="container-search"
+					class="container container--content-centered theme-dark"
+				>
+					<gs-keywords></gs-keywords>
+				</div>
 
-				<gs-last-update></gs-last-update>
+				<div
+					id="container-filters"
+					class="container container--content-fluid"
+				>
+					<gs-last-update
+						class="column column--width-25"
+					></gs-last-update>
 
-				<gs-min-stars></gs-min-stars>
+					<gs-min-stars
+						class="column column--width-25"
+					></gs-min-stars>
 
-				<gs-languages></gs-languages>
+					<gs-languages
+						id="languages"
+						class="column column--width-50"
+					></gs-languages>
+				</div>
 
-				<gs-message
-					id="chars-left"
-					text="Enter some text in the search field above."
-					tag="P"
-				></gs-message>
+				<div
+					id="container-status"
+					class="container"
+				>
+					<gs-message
+						id="chars-left"
+						text="Enter some text in the search field above."
+						class="message"
+					></gs-message>
 
-				<gs-message
-					id="loading"
-					text=""
-					tag="P"
-				></gs-message>
+					<gs-message
+						id="loading"
+						class="message"
+					></gs-message>
 
-				<gs-message
-					id="no-results"
-					text=""
-					tag="P"
-				></gs-message>
+					<gs-message
+						id="no-results"
+						class="message"
+					></gs-message>
 
-				<gs-message
-					id="too-many-requests"
-					text=""
-					tag="P"
-				></gs-message>
+					<gs-message
+						id="too-many-requests"
+						class="message"
+					></gs-message>
+				</div>
 
-				<gs-message
-					id="items-found"
-					text=""
-					tag="H3"
-				></gs-message>
+				<div
+					id="container-results"
+					class="container container--content-column"
+				>
+					<gs-message
+						id="items-found"
+						tag="H3"
+						class="message"
+					></gs-message>
 
-				<gs-results
-					id="results"
-				></gs-results>
+					<gs-results id="results"></gs-results>
 
-				<gs-pagination
-					id="pagination"
-					page="1"
-					items_found="0"
-				></gs-results>
+					<gs-pagination
+						id="pagination"
+						page="1"
+						items_found="0"
+					></gs-results>
+				</div>
 			</main>
 		`;
 	}
