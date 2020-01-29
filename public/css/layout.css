@@ -12,3 +12,38 @@ body
 	overflow-x: hidden;
 	line-height: 1.5;
 }
+
+#content
+{
+	margin: 0 auto;
+	padding: 0 4rem;
+	width: 100%;
+	max-width: 50rem;
+}
+
+#container-search
+{
+	padding: 5rem 0;
+	display: flex;
+	justify-content: center;
+	background-color: var(--accent_color);
+}
+
+#container-filters
+{
+	padding: 2rem 0;
+	display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#container-filters gs-last-update,
+#container-filters gs-min-stars
+{
+	flex: 1 1 25%;
+}
+
+#container-filters gs-languages
+{
+	flex: 1 1 50%;
+}
