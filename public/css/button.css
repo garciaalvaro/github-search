@@ -17,7 +17,7 @@
 .btn
 {
 	cursor: pointer;
-	padding: .4em .5em;
+	padding: .4em;
 	font-size: .95em;
 	position: relative;
 }
@@ -27,8 +27,8 @@
 	content: "";
 	height: .3em;
 	position: absolute;
-	left: .5em;
-	right: .5em;
+	left: .4em;
+	right: .4em;
 	bottom: .2em;
 	background-color: var(--color_07);
 	transform: scaleY(0);

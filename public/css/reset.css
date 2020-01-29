@@ -19,6 +19,7 @@ h5 { font-size: 0.894rem; }
 h6 { font-size: 0.816rem; }
 
 input { color: inherit; }
+select, input { font-size: inherit; }
 
 ::-webkit-input-placeholder {
 	color: inherit;

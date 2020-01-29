@@ -43,7 +43,7 @@ export class Result extends HTMLElement {
 					<p>${description}</p>
 				</section>
 
-				<footer class="container">
+				<footer class="container container--content-fluid">
 					<div class="item__stars">
 						${icon_star}
 

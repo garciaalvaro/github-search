@@ -54,15 +54,15 @@
 .item__stars ~ span:before
 {
 	content: "|";
-	margin: .7em;
-	opacity: .4;
+	margin-right: .7em;
+	color: var(--color_02);
 }
 
-.item__license:empty,
-.item__language:empty,
-.item__stars:empty
+.item__license,
+.item__language,
+.item__stars
 {
-	display: none;
+	margin-right: .7em;
 }
 
 #pagination

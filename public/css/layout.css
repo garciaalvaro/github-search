@@ -16,7 +16,7 @@ body
 #content
 {
 	margin: 0 auto;
-	padding: 0 4rem 4rem;
+	padding: 4rem;
 	width: 100%;
 	max-width: 50rem;
 }
@@ -25,6 +25,7 @@ body
 {
 	position: relative;
 	padding: 5rem 0;
+	margin-top: -4rem;
 }
 
 #container-search:before
@@ -43,7 +44,7 @@ body
 {
 	padding: 2rem 0;
 	display: grid;
-	grid-gap: 20px;
+	grid-gap: 2.5rem;
 	grid-template-columns: repeat( auto-fit, minmax( 130px, 1fr ) );
 }
 
@@ -51,4 +52,12 @@ body
 {
 	margin: -.5em;
 	grid-column: span 2;
+}
+
+@media screen and (max-width: 600px)
+{
+	#content
+	{
+		padding: 3rem;
+	}
 }
