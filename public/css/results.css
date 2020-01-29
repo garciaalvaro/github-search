@@ -28,17 +28,6 @@
 	background-color: var(--color_01);
 }
 
-.item__link
-{
-	color: inherit;
-	text-decoration: none;
-}
-
-.item__link:hover
-{
-	text-decoration: underline;
-}
-
 .item__stars
 {
 	display: flex;
