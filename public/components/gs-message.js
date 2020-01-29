@@ -31,8 +31,8 @@ export class Message extends HTMLElement {
 	 * This function is a simple helper, to make the syntax cleaner.
 	 */
 	getHtml() {
-		const text = sanitize(this.getAttribute("text")) || "";
-		const tag = sanitize(this.getAttribute("tag")) || "";
+		const text = sanitize(this.getAttribute("text") || "");
+		const tag = sanitize(this.getAttribute("tag") || "");
 
 		if (!text) return "";
 
