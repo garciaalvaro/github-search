@@ -28,17 +28,23 @@ export class Keywords extends HTMLElement {
 	 */
 	render() {
 		this.innerHTML = `
-			<div class="container">
+			<div class="container search search--big">
 
-				<label for="input">Search</label>
+				<label
+					for="input"
+					class="search__label"
+				>Search</label>
 
 				<input
 					id="input"
+					class="search__input"
 					type="text"
 					placeholder="Search repositories..."
 				/>
 
-				<button>${icon_search}</button>
+				<button
+					class="search__button btn btn--icon"
+				>${icon_search}</button>
 
 			</div>
 		`;
