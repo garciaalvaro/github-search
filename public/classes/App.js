@@ -47,7 +47,7 @@ export class App {
 		this.$no_results.setAttribute("text", "");
 		this.$items_found.setAttribute("text", "");
 		this.$too_many_requests.setAttribute("text", "");
-		this.$results.updateItems([]);
+		this.$results.items = [];
 
 		// If keywords has less than 3 characters do not continue
 		if (this.keywords.length < 3) {
@@ -82,7 +82,7 @@ export class App {
 			}
 
 			if (!data) {
-				this.$results.updateItems([]);
+				this.$results.items = [];
 
 				return;
 			}
@@ -100,9 +100,7 @@ export class App {
 				);
 			}
 
-			const items_prepared = prepareItems(items);
-
-			this.$results.updateItems(items_prepared);
+			this.$results.items = prepareItems(items);
 
 			this.$pagination.setAttribute("items_found", total_count);
 		}, time);

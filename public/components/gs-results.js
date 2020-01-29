@@ -7,7 +7,7 @@ export class Results extends HTMLElement {
 	constructor() {
 		super();
 
-		this.items = [];
+		this._items = [];
 
 		this.render();
 	}
@@ -15,8 +15,8 @@ export class Results extends HTMLElement {
 	/**
 	 * Update the items prop and render
 	 */
-	updateItems(items = []) {
-		this.items = items;
+	set items(items = []) {
+		this._items = items;
 
 		this.render();
 	}
@@ -25,13 +25,13 @@ export class Results extends HTMLElement {
 	 * Render the component HTML
 	 */
 	render() {
-		if (!this.items.length) {
+		if (!this._items.length) {
 			this.innerHTML = "";
 
 			return;
 		}
 
-		const html_list = this.items
+		const html_list = this._items
 			.map(
 				({
 					name,
