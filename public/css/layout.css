@@ -35,7 +35,7 @@ body
 	left: -100vw;
 	width: 200vw;
 	height: 100%;
-	background-color: var(--accent_color);
+	background-color: var(--background_color);
 	z-index: -1;
 }
 

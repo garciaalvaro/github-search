@@ -211,7 +211,7 @@ export class App {
 			<main id="content">
 				<div
 					id="container-search"
-					class="container container--content-centered"
+					class="container container--content-centered theme-dark"
 				>
 					<gs-keywords></gs-keywords>
 				</div>

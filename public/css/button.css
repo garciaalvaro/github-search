@@ -30,7 +30,7 @@
 	left: .5em;
 	right: .5em;
 	bottom: .2em;
-	background-color: var(--accent_color_07);
+	background-color: var(--color_07);
 	transform: scaleY(0);
 	transform-origin: bottom;
 	transition: transform .15s ease, opacity .15s;
@@ -62,13 +62,13 @@
 .btn.btn--filled
 {
 	border-radius: .1em;
-    background-color: var(--accent_color_01);
+    background-color: var(--color_01);
 	transition: background-color .15s ease;
 }
 
 .btn.btn--filled:hover
 {
-    background-color: var(--accent_color_02);
+    background-color: var(--color_02);
 }
 
 .btn[disabled]
