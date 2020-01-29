@@ -1,0 +1,31 @@
+/**
+* Reset styles
+*/
+
+*,
+*:before,
+*:after
+{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+h1 { font-size: 2rem; }
+h2 { font-size: 1.414rem; }
+h3 { font-size: 1.155rem; }
+h4 { font-size: 1rem; }
+h5 { font-size: 0.894rem; }
+h6 { font-size: 0.816rem; }
+
+input { color: inherit; }
+select, input { font-size: inherit; }
+
+::-webkit-input-placeholder {
+	color: inherit;
+	opacity: .3;
+}
+::-moz-placeholder {
+	color: inherit;
+	opacity: .3;
+}

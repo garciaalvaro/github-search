@@ -1,0 +1,13 @@
+/**
+ * Column
+ */
+
+.column--width-25
+{
+	flex: 1 1 25%;
+}
+
+.column--width-50
+{
+	flex: 1 1 50%;
+}

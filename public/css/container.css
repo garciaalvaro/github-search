@@ -1,0 +1,23 @@
+/**
+ * Container
+ */
+
+.container
+{
+	display: flex;
+}
+
+.container--content-centered
+{
+	justify-content: center;
+}
+
+.container--content-fluid
+{
+    flex-wrap: wrap;
+}
+
+.container--content-column
+{
+    flex-direction: column;
+}

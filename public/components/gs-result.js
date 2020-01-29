@@ -10,13 +10,11 @@ export class Result extends HTMLElement {
 	constructor() {
 		super();
 
-		this.attachShadow({ mode: "open" });
-
 		this.render();
 	}
 
 	/**
-	 * Render the component HTML in its Shadow DOM
+	 * Render the component HTML
 	 */
 	render() {
 		const name = sanitize(this.getAttribute("name"));
@@ -28,31 +26,35 @@ export class Result extends HTMLElement {
 		const updated = sanitize(this.getAttribute("updated"));
 		const license = sanitize(this.getAttribute("license"));
 
-		this.shadowRoot.innerHTML = `
-			<article>
+		this.innerHTML = `
+			<article class="item">
 				<header>
 					<h4>
-						<a href="${url}"
+						<a
+							href="${url}"
+							class="item__link"
 						>${user} / ${name}</a>
 					<h4>
 				</header>
 
-				<section>
+				<section
+					class="item__body"
+				>
 					<p>${description}</p>
 				</section>
 
-				<footer>
-					<div class="stars">
+				<footer class="container container--content-fluid">
+					<div class="item__stars">
 						${icon_star}
 
 						<span>${stars}</span>
 					</div>
 
-					<span class="language">${language}</span>
+					<span class="item__language">${language}</span>
 
-					<span class="license">${license}</span>
+					<span class="item__license">${license}</span>
 
-					<span class="updated">${updated}</span>
+					<span class="item__updated">${updated}</span>
 
 				</footer>
 			</article>

@@ -8,10 +8,8 @@ export class LastUpdate extends HTMLElement {
 	constructor() {
 		super();
 
-		this.attachShadow({ mode: "open" });
-
 		// When the select changes, we dispatch an event with the new value
-		this.shadowRoot.addEventListener("input", e => {
+		this.addEventListener("input", e => {
 			this.dispatchEvent(
 				new CustomEvent("filterUpdated", {
 					bubbles: true,
@@ -24,21 +22,25 @@ export class LastUpdate extends HTMLElement {
 	}
 
 	/**
-	 * Render the component HTML in its Shadow DOM
+	 * Render the component HTML
 	 */
 	render() {
-		this.shadowRoot.innerHTML = `
-			<label for="last_update">Last update</label>
+		this.innerHTML = `
+			<div class="container container--content-column">
 
-			<select name="last_update" id="last_update">
-				<option value="">Any time</option>
-				<option value="last_week">Last week</option>
-				<option value="last_month">Last month</option>
-				<option value="last_6_months">Last 6 months</option>
-				<option value="last_year">Last year</option>
-				<option value="last_2_years">Last 2 years</option>
-				<option value="last_3_years">Last 3 years</option>
-			</select>
+				<label for="last_update">Last update</label>
+
+				<select name="last_update" id="last_update">
+					<option value="">Any time</option>
+					<option value="last_week">Last week</option>
+					<option value="last_month">Last month</option>
+					<option value="last_6_months">Last 6 months</option>
+					<option value="last_year">Last year</option>
+					<option value="last_2_years">Last 2 years</option>
+					<option value="last_3_years">Last 3 years</option>
+				</select>
+
+			</div>
 		`;
 	}
 }

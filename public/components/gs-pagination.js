@@ -16,10 +16,8 @@ export class Pagination extends HTMLElement {
 
 		this.items_per_page = 30;
 
-		this.attachShadow({ mode: "open" });
-
 		// When the input changes, we dispatch an event with the new value
-		this.shadowRoot.addEventListener("click", e => {
+		this.addEventListener("click", e => {
 			const { id } = e.target;
 
 			if (id !== "prev" && id !== "next") return;
@@ -50,7 +48,7 @@ export class Pagination extends HTMLElement {
 	}
 
 	/**
-	 * Render the component HTML in its Shadow DOM
+	 * Render the component HTML
 	 */
 	render() {
 		const page = parseInt(this.getAttribute("page"));
@@ -59,22 +57,24 @@ export class Pagination extends HTMLElement {
 		const next_disabled = items_found <= page * this.items_per_page;
 
 		if (items_found === 0 || items_found <= this.items_per_page) {
-			this.shadowRoot.innerHTML = "";
+			this.innerHTML = "";
 
 			return;
 		}
 
-		this.shadowRoot.innerHTML = `
+		this.innerHTML = `
 			<nav>
 				<span>Page ${page}</span>
 
 				<button
 					id="prev"
+					class="btn btn--text btn--filled"
 					${prev_disabled ? "disabled" : ""}
 				>Prev</button>
 
 				<button
 					id="next"
+					class="btn btn--text btn--filled"
 					${next_disabled ? "disabled" : ""}
 				>Next</button>
 			<nav>

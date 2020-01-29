@@ -10,10 +10,8 @@ export class Keywords extends HTMLElement {
 	constructor() {
 		super();
 
-		this.attachShadow({ mode: "open" });
-
 		// When the input changes, we dispatch an event with the new value
-		this.shadowRoot.addEventListener("input", e => {
+		this.addEventListener("input", e => {
 			this.dispatchEvent(
 				new CustomEvent("filterUpdated", {
 					bubbles: true,
@@ -26,19 +24,29 @@ export class Keywords extends HTMLElement {
 	}
 
 	/**
-	 * Render the component HTML in its Shadow DOM
+	 * Render the component HTML
 	 */
 	render() {
-		this.shadowRoot.innerHTML = `
-			<label for="input">Search</label>
+		this.innerHTML = `
+			<div class="container search search--big">
 
-			<input
-				id="input"
-				type="text"
-				placeholder="Search repositories..."
-			/>
+				<label
+					for="input"
+					class="search__label"
+				>Search</label>
 
-			<button>${icon_search}</button>
+				<input
+					id="input"
+					class="search__input"
+					type="text"
+					placeholder="Search repositories..."
+				/>
+
+				<button
+					class="search__button btn btn--icon"
+				>${icon_search}</button>
+
+			</div>
 		`;
 	}
 }
