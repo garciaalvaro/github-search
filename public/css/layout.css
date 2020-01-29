@@ -54,6 +54,12 @@ body
 	grid-column: span 2;
 }
 
+*::selection
+{
+	color: var(--background_color);
+	background-color: var(--color_07);
+}
+
 @media screen and (max-width: 600px)
 {
 	#content
