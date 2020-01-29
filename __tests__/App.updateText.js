@@ -7,7 +7,7 @@ describe("App class", () => {
 		document.body.innerHTML = `<div id="root"></div>`;
 	});
 
-	test("updateText method", async () => {
+	test("updateText method", () => {
 		// Instantiate the class
 		const app = new App();
 
