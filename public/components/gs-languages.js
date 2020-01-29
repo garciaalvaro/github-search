@@ -42,9 +42,9 @@ export class Languages extends HTMLElement {
 			// Update .is-active class and remove it from the previous one
 			[...$buttons].forEach($button => {
 				if ($button.dataset.language === language) {
-					$button.classList.toggle("is-active");
+					$button.classList.toggle("btn--is-active");
 				} else {
-					$button.classList.remove("is-active");
+					$button.classList.remove("btn--is-active");
 				}
 			});
 		});
@@ -61,6 +61,7 @@ export class Languages extends HTMLElement {
 				language => `
 					<button
 						data-language="${language}"
+						class="btn"
 					>${language}</button>
 				`
 			)
