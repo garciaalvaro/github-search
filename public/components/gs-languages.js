@@ -21,9 +21,7 @@ export class Languages extends HTMLElement {
 			"C#"
 		];
 
-		this.attachShadow({ mode: "open" });
-
-		this.shadowRoot.addEventListener("click", e => {
+		this.addEventListener("click", e => {
 			const { language } = e.target.dataset;
 
 			if (!language) return;
@@ -39,7 +37,7 @@ export class Languages extends HTMLElement {
 				})
 			);
 
-			const $buttons = this.shadowRoot.querySelectorAll("button");
+			const $buttons = this.querySelectorAll("button");
 
 			// Update .is-active class and remove it from the previous one
 			[...$buttons].forEach($button => {
@@ -55,7 +53,7 @@ export class Languages extends HTMLElement {
 	}
 
 	/**
-	 * Render the component HTML in its Shadow DOM
+	 * Render the component HTML
 	 */
 	render() {
 		const languages = this._languages
@@ -68,56 +66,10 @@ export class Languages extends HTMLElement {
 			)
 			.join("");
 
-		this.shadowRoot.innerHTML =
-			`
-			<style>
-				button,
-				button:focus,
-				button:hover
-				{
-					background: none;
-					outline: none;
-					box-shadow: none;
-					border: none;
-					color: inherit;
-					letter-spacing: inherit;
-				}
-
-				button
-				{
-					cursor: pointer;
-					padding: .4em .5em;
-					font-size: .95em;
-					position: relative;
-				}
-
-				button:before
-				{
-					content: "";
-					height: .3em;
-					position: absolute;
-					left: .5em;
-					right: .5em;
-					bottom: .2em;
-					background-color: var(--accent_color_07);
-					transform: scaleY(0);
-					transform-origin: bottom;
-					transition: transform .15s ease, opacity .15s;
-					opacity: 0;
-				}
-
-				button:hover:before
-				{
-					transform: scaleY(1);
-					opacity: .7;
-				}
-
-				button.is-active:before
-				{
-					transform: scaleY(1);
-					opacity: 1;
-				}
-			</style>
-		` + languages;
+		this.innerHTML = `
+			<div class="container container--content-fluid">
+				${languages}
+			</div>
+		`;
 	}
 }

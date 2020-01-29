@@ -10,13 +10,11 @@ export class Result extends HTMLElement {
 	constructor() {
 		super();
 
-		this.attachShadow({ mode: "open" });
-
 		this.render();
 	}
 
 	/**
-	 * Render the component HTML in its Shadow DOM
+	 * Render the component HTML
 	 */
 	render() {
 		const name = sanitize(this.getAttribute("name"));
@@ -28,7 +26,7 @@ export class Result extends HTMLElement {
 		const updated = sanitize(this.getAttribute("updated"));
 		const license = sanitize(this.getAttribute("license"));
 
-		this.shadowRoot.innerHTML = `
+		this.innerHTML = `
 			<article>
 				<header>
 					<h4>

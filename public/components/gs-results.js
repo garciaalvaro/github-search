@@ -9,8 +9,6 @@ export class Results extends HTMLElement {
 
 		this.items = [];
 
-		this.attachShadow({ mode: "open" });
-
 		this.render();
 	}
 
@@ -24,11 +22,11 @@ export class Results extends HTMLElement {
 	}
 
 	/**
-	 * Render the component HTML in its Shadow DOM
+	 * Render the component HTML
 	 */
 	render() {
 		if (!this.items.length) {
-			this.shadowRoot.innerHTML = "";
+			this.innerHTML = "";
 
 			return;
 		}
@@ -61,7 +59,7 @@ export class Results extends HTMLElement {
 			)
 			.join("");
 
-		this.shadowRoot.innerHTML = `
+		this.innerHTML = `
 			<ul>
 				${html_list}
 			</ul>

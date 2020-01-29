@@ -16,8 +16,6 @@ export class Message extends HTMLElement {
 	constructor() {
 		super();
 
-		this.attachShadow({ mode: "open" });
-
 		this.render();
 	}
 
@@ -55,12 +53,12 @@ export class Message extends HTMLElement {
 	}
 
 	/**
-	 * Render the component HTML in its Shadow DOM
+	 * Render the component HTML
 	 */
 	render() {
 		const text = this.getAttribute("text") || "";
 		const tag = this.getAttribute("tag") || "";
 
-		this.shadowRoot.innerHTML = this.getHtml(tag, text);
+		this.innerHTML = this.getHtml(tag, text);
 	}
 }

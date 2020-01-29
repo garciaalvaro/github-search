@@ -204,7 +204,7 @@ export class App {
 	}
 
 	/**
-	 * Render the component HTML in its Shadow DOM
+	 * Render the component HTML
 	 */
 	render() {
 		this.$root.innerHTML = `
