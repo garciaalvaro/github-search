@@ -213,7 +213,9 @@ export class App {
 					id="title"
 					class="theme-dark"
 				>
-					<a href="#">GitHub Search</a>
+					<a
+						href="https://github.com/garciaalvaro/github-search"
+					>GitHub Search</a>
 				</h1>
 
 				<div
