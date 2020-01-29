@@ -58,6 +58,13 @@
 	color: var(--color_02);
 }
 
+.item__license:empty,
+.item__language:empty,
+.item__updated:empty
+{
+	display: none;
+}
+
 .item__license,
 .item__language,
 .item__stars
