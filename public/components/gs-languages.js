@@ -23,13 +23,17 @@ export class Languages extends HTMLElement {
 
 		this.attachShadow({ mode: "open" });
 
-		// When a button is clicked, we dispatch an event with its value
 		this.shadowRoot.addEventListener("click", e => {
+			const { language } = e.target.dataset;
+
+			if (!language) return;
+
+			// When a button is clicked, we dispatch an event with its value
 			this.dispatchEvent(
 				new CustomEvent("filterUpdated", {
 					bubbles: true,
 					detail: {
-						value: e.target.dataset.language,
+						value: language,
 						prop_name: "language"
 					}
 				})
