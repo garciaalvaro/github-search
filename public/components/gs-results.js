@@ -60,7 +60,7 @@ export class Results extends HTMLElement {
 			.join("");
 
 		this.innerHTML = `
-			<ul>
+			<ul class="list">
 				${html_list}
 			</ul>
 		`;

@@ -68,13 +68,13 @@ export class Pagination extends HTMLElement {
 
 				<button
 					id="prev"
-					class="btn"
+					class="btn btn--text btn--filled"
 					${prev_disabled ? "disabled" : ""}
 				>Prev</button>
 
 				<button
 					id="next"
-					class="btn"
+					class="btn btn--text btn--filled"
 					${next_disabled ? "disabled" : ""}
 				>Next</button>
 			<nav>

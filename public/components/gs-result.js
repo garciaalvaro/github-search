@@ -27,30 +27,34 @@ export class Result extends HTMLElement {
 		const license = sanitize(this.getAttribute("license"));
 
 		this.innerHTML = `
-			<article>
+			<article class="item">
 				<header>
 					<h4>
-						<a href="${url}"
+						<a
+							href="${url}"
+							class="item__link"
 						>${user} / ${name}</a>
 					<h4>
 				</header>
 
-				<section>
+				<section
+					class="item__body"
+				>
 					<p>${description}</p>
 				</section>
 
-				<footer>
-					<div class="stars">
+				<footer class="container">
+					<div class="item__stars">
 						${icon_star}
 
 						<span>${stars}</span>
 					</div>
 
-					<span class="language">${language}</span>
+					<span class="item__language">${language}</span>
 
-					<span class="license">${license}</span>
+					<span class="item__license">${license}</span>
 
-					<span class="updated">${updated}</span>
+					<span class="item__updated">${updated}</span>
 
 				</footer>
 			</article>

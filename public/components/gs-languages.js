@@ -61,7 +61,7 @@ export class Languages extends HTMLElement {
 				language => `
 					<button
 						data-language="${language}"
-						class="btn"
+						class="btn btn--underlined"
 					>${language}</button>
 				`
 			)

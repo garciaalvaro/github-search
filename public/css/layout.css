@@ -16,7 +16,7 @@ body
 #content
 {
 	margin: 0 auto;
-	padding: 0 4rem;
+	padding: 0 4rem 4rem;
 	width: 100%;
 	max-width: 50rem;
 }
@@ -42,4 +42,13 @@ body
 #container-filters
 {
 	padding: 2rem 0;
+	display: grid;
+	grid-gap: 20px;
+	grid-template-columns: repeat( auto-fit, minmax( 130px, 1fr ) );
+}
+
+#languages
+{
+	margin: -.5em;
+	grid-column: span 2;
 }

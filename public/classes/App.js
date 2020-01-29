@@ -229,6 +229,7 @@ export class App {
 					></gs-min-stars>
 
 					<gs-languages
+						id="languages"
 						class="column column--width-50"
 					></gs-languages>
 				</div>
