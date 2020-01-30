@@ -1,6 +1,6 @@
 {
 	"name": "github-search",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Small app to search GitHub repositories",
 	"scripts": {
 		"server:dev": "pm2-dev start server.js",

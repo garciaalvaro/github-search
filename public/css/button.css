@@ -51,10 +51,10 @@
 
 .btn.btn--text
 {
-    text-transform: uppercase;
-    letter-spacing: .05em;
-    line-height: 2;
-    padding: 0 .6em;
+	text-transform: uppercase;
+	letter-spacing: .05em;
+	line-height: 2;
+	padding: 0 .6em;
 	margin: 0 .2em;
 	font-size: .9em;
 }
@@ -62,13 +62,13 @@
 .btn.btn--filled
 {
 	border-radius: .1em;
-    background-color: var(--color_01);
+	background-color: var(--color_01);
 	transition: background-color .15s ease;
 }
 
 .btn.btn--filled:hover
 {
-    background-color: var(--color_02);
+	background-color: var(--color_02);
 }
 
 .btn[disabled]
@@ -79,5 +79,5 @@
 
 .btn.btn--filled[disabled]
 {
-    background-color: transparent;
+	background-color: transparent;
 }
