@@ -25,11 +25,8 @@ export class App {
 		this.registerEventListeners();
 		this.render();
 
-		this.$chars_left = document.getElementById("chars-left");
-		this.$loading = document.getElementById("loading");
-		this.$no_results = document.getElementById("no-results");
+		this.$status = document.getElementById("status");
 		this.$items_found = document.getElementById("items-found");
-		this.$error = document.getElementById("error");
 		this.$results = document.getElementById("results");
 		this.$pagination = document.getElementById("pagination");
 	}
@@ -47,61 +44,54 @@ export class App {
 	updateStatus(status = "", payload = null) {
 		switch (status) {
 			case "THROTTLE_PREPARE":
-				this.updateText(this.$loading);
-				this.updateText(this.$no_results);
+				this.updateText(this.$status);
 				this.updateText(this.$items_found);
-				this.updateText(this.$error);
 
 				break;
 
 			case "THROTTLE":
-				this.updateText(this.$loading, "Waiting...");
+				this.updateText(this.$status, "Waiting...");
 
 				break;
 
 			case "FETCH":
-				this.updateText(this.$loading, "Loading...");
+				this.updateText(this.$status, "Loading...");
 
 				break;
 
 			case "FETCH_FAILED":
-				this.updateText(this.$loading);
 				this.updateText(
-					this.$error,
+					this.$status,
 					"It looks like there was an error getting the data. " +
-						"Please try again in a some time."
+						"Please try again in some time."
 				);
 
 				break;
 
 			case "FETCH_FORBIDDEN":
-				this.updateText(this.$loading);
 				this.updateText(
-					this.$error,
+					this.$status,
 					"It looks like too many requests were made. " +
 						"Please try again in a minute."
 				);
 
 				break;
 
-			case "UPDATE_CHARACTERS":
+			case "NOT_ENOUGH_CHARACTERS":
 				this.updateText(
-					this.$chars_left,
+					this.$status,
 					payload === 0
 						? "Enter some text in the search field above"
 						: payload === 1
 						? "Enter 2 more characters"
-						: payload === 2
-						? "Enter 1 more character"
-						: ""
+						: "Enter 1 more character"
 				);
 
 				break;
 
 			case "UPDATE_RESULTS":
-				this.updateText(this.$loading);
-
 				if (payload) {
+					this.updateText(this.$status);
 					this.updateText(
 						this.$items_found,
 						`${payload.toLocaleString()} repositor${
@@ -109,7 +99,7 @@ export class App {
 						} found`
 					);
 				} else {
-					this.updateText(this.$no_results, "No results");
+					this.updateText(this.$status, "No results");
 				}
 
 				break;
@@ -250,8 +240,8 @@ export class App {
 
 			this.updateResults();
 
-			if (prop_name === "keywords") {
-				this.updateStatus("UPDATE_CHARACTERS", value.length);
+			if (prop_name === "keywords" && value.length < 3) {
+				this.updateStatus("NOT_ENOUGH_CHARACTERS", value.length);
 			}
 		});
 	}
@@ -301,20 +291,8 @@ export class App {
 					class="container"
 				>
 					<gs-message
-						id="chars-left"
+						id="status"
 						text="Enter some text in the search field above."
-					></gs-message>
-
-					<gs-message
-						id="loading"
-					></gs-message>
-
-					<gs-message
-						id="no-results"
-					></gs-message>
-
-					<gs-message
-						id="error"
 					></gs-message>
 				</div>
 
