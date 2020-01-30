@@ -13,39 +13,40 @@ describe("App class", () => {
 
 		app.updateStatus("THROTTLE_PREPARE");
 
-		expect(app.$loading.getAttribute("text")).toBe("");
+		expect(app.$status.getAttribute("text")).toBe("");
 
 		app.updateStatus("THROTTLE");
 
-		expect(app.$loading.getAttribute("text")).toBe("Waiting...");
+		expect(app.$status.getAttribute("text")).toBe("Waiting...");
 
 		app.updateStatus("FETCH_FAILED");
 
-		expect(app.$loading.getAttribute("text")).toBe("");
+		expect(app.$status.getAttribute("text")).toBe(
+			"It looks like there was an error getting the data. " +
+				"Please try again in some time."
+		);
 
 		app.updateStatus("FETCH_FORBIDDEN");
 
-		expect(app.$error.getAttribute("text")).toBe(
+		expect(app.$status.getAttribute("text")).toBe(
 			"It looks like too many requests were made. " +
 				"Please try again in a minute."
 		);
 
-		app.updateStatus("UPDATE_CHARACTERS", 0);
+		app.updateStatus("NOT_ENOUGH_CHARACTERS", 0);
 
-		expect(app.$chars_left.getAttribute("text")).toBe(
+		expect(app.$status.getAttribute("text")).toBe(
 			"Enter some text in the search field above"
 		);
 
-		app.updateStatus("UPDATE_CHARACTERS", 1);
+		app.updateStatus("NOT_ENOUGH_CHARACTERS", 1);
 
-		expect(app.$chars_left.getAttribute("text")).toBe(
+		expect(app.$status.getAttribute("text")).toBe(
 			"Enter 2 more characters"
 		);
 
-		app.updateStatus("UPDATE_CHARACTERS", 2);
+		app.updateStatus("NOT_ENOUGH_CHARACTERS", 2);
 
-		expect(app.$chars_left.getAttribute("text")).toBe(
-			"Enter 1 more character"
-		);
+		expect(app.$status.getAttribute("text")).toBe("Enter 1 more character");
 	});
 });

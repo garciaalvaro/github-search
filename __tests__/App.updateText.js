@@ -11,12 +11,12 @@ describe("App class", () => {
 		// Instantiate the class
 		const app = new App();
 
-		app.updateText(app.$no_results, "Some Text");
+		app.updateText(app.$status, "Some Text");
 
-		expect(app.$no_results.getAttribute("text")).toBe("Some Text");
+		expect(app.$status.getAttribute("text")).toBe("Some Text");
 
-		app.updateText(app.$no_results, "");
+		app.updateText(app.$status, "");
 
-		expect(app.$no_results.getAttribute("text")).toBe("");
+		expect(app.$status.getAttribute("text")).toBe("");
 	});
 });
