@@ -4,7 +4,7 @@
 
 This project is a simple app that provides a UI to search GitHub repositories using the [GitHub Search API](https://developer.github.com/v3/search/).
 
-The goal was to build it in a simple way. The project uses vanilla JavaScript and CSS. It is built for modern browsers and it makes use of APIs/features which are already available, such as Web Components, JavaScript modules and ES6. For this reason it can be run as is, without a previous bundling step.
+The goal was to build it in a simple way. The project uses vanilla JavaScript and CSS. It is built for modern browsers and it makes use of APIs/features which are already available, such as Web Components, JavaScript modules and ES6. For these reasons it can be run as is, without a previous bundling step.
 
 - **Vanilla JavaScript** (ES6) and CSS
 - Uses JavaScript modules
@@ -45,6 +45,11 @@ Install the project dependencies and start the server. From the root directory i
 ---
 
 ## Changelog
+
+#### 1.0.2
+
+- Added favicon
+- Added license file
 
 #### 1.0.1
 
