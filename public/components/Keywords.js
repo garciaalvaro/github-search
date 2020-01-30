@@ -1,4 +1,4 @@
-import { icon_search } from "/utils/icons.js";
+import { icon_search } from "../utils/icons.js";
 
 /**
  * gs-keywords
@@ -20,6 +20,22 @@ export class Keywords extends HTMLElement {
 			);
 		});
 
+		// When the button is clicked, we dispatch an event with the last value
+		this.addEventListener("click", e => {
+			if (!e.target.classList.contains("search__button")) return;
+
+			const inputs = this.getElementsByClassName("search__input");
+
+			if (!inputs || !inputs.length) return;
+
+			this.dispatchEvent(
+				new CustomEvent("filterUpdated", {
+					bubbles: true,
+					detail: { value: inputs[0].value, prop_name: "keywords" }
+				})
+			);
+		});
+
 		this.render();
 	}
 
@@ -36,7 +52,6 @@ export class Keywords extends HTMLElement {
 				>Search</label>
 
 				<input
-					id="input"
 					class="search__input"
 					type="text"
 					placeholder="Search repositories..."

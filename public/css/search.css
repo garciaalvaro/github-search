@@ -39,7 +39,8 @@
 .search__button svg
 {
 	width: 1em;
-	height: 1em;
+    height: 1em;
+    pointer-events: none;
 }
 
 .search__input:focus

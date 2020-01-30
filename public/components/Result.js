@@ -1,5 +1,5 @@
-import { sanitize } from "/utils/sanitize.js";
-import { icon_star } from "/utils/icons.js";
+import { sanitize } from "../utils/sanitize.js";
+import { icon_star } from "../utils/icons.js";
 
 /**
  * gs-result

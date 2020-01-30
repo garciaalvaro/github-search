@@ -1,4 +1,4 @@
-import { sanitize } from "/utils/sanitize.js";
+import { sanitize } from "../utils/sanitize.js";
 
 /**
  * gs-message
@@ -28,11 +28,11 @@ export class Message extends HTMLElement {
 
 	/**
 	 * Get the HTML to render.
-	 * This function is a simple helper, to make the logic cleaner.
+	 * This function is a simple helper, to make the syntax cleaner.
 	 */
-	getHtml(tag, text) {
-		// Sanitize the text
-		text = sanitize(text);
+	getHtml() {
+		const text = sanitize(this.getAttribute("text") || "");
+		const tag = sanitize(this.getAttribute("tag") || "");
 
 		if (!text) return "";
 
@@ -56,9 +56,6 @@ export class Message extends HTMLElement {
 	 * Render the component HTML
 	 */
 	render() {
-		const text = this.getAttribute("text") || "";
-		const tag = this.getAttribute("tag") || "";
-
-		this.innerHTML = this.getHtml(tag, text);
+		this.innerHTML = this.getHtml();
 	}
 }

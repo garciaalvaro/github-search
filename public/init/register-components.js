@@ -1,11 +1,11 @@
-import { Keywords } from "/components/gs-keywords.js";
-import { LastUpdate } from "/components/gs-last-update.js";
-import { MinStars } from "/components/gs-min-stars.js";
-import { Languages } from "/components/gs-languages.js";
-import { Message } from "/components/gs-message.js";
-import { Results } from "/components/gs-results.js";
-import { Result } from "/components/gs-result.js";
-import { Pagination } from "/components/gs-pagination.js";
+import { Keywords } from "../components/Keywords.js";
+import { LastUpdate } from "../components/LastUpdate.js";
+import { MinStars } from "../components/MinStars.js";
+import { Languages } from "../components/Languages.js";
+import { Message } from "../components/Message.js";
+import { Results } from "../components/Results.js";
+import { Result } from "../components/Result.js";
+import { Pagination } from "../components/Pagination.js";
 
 customElements.define("gs-keywords", Keywords);
 customElements.define("gs-last-update", LastUpdate);

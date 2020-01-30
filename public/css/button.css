@@ -33,7 +33,7 @@
 	background-color: var(--color_07);
 	transform: scaleY(0);
 	transform-origin: bottom;
-	transition: transform .15s ease, opacity .15s;
+	transition: transform .15s ease, opacity .15s ease;
 	opacity: 0;
 }
 
