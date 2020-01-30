@@ -35,6 +35,8 @@ export class App {
 	 * Utility to update the "text" attribute of a given element
 	 */
 	updateText($element, text = "") {
+		if (!$element) return;
+
 		$element.setAttribute("text", text);
 	}
 
