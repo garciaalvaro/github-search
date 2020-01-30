@@ -14,10 +14,10 @@
 
 .container--content-fluid
 {
-    flex-wrap: wrap;
+	flex-wrap: wrap;
 }
 
 .container--content-column
 {
-    flex-direction: column;
+	flex-direction: column;
 }
