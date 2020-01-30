@@ -46,6 +46,13 @@ Install the project dependencies and start the server. From the root directory i
 
 ## Changelog
 
+#### 1.0.0
+
+- Minor styling fixes
+- Several code fixes and improvements
+- Added tests with Jest
+- Added project description and instructions
+
 #### 0.3.0
 
 - Added styling to the page and components
