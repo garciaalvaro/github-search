@@ -46,6 +46,11 @@ Install the project dependencies and start the server. From the root directory i
 
 ## Changelog
 
+#### 1.0.1
+
+- Added base tag in index.html so any route will point to the same path
+- Cleaned white spaces in some css files
+
 #### 1.0.0
 
 - Minor styling fixes
