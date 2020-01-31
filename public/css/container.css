@@ -7,17 +7,17 @@
 	display: flex;
 }
 
-.container--content-centered
+.container.container--content-centered
 {
 	justify-content: center;
 }
 
-.container--content-fluid
+.container.container--content-fluid
 {
 	flex-wrap: wrap;
 }
 
-.container--content-column
+.container.container--content-column
 {
 	flex-direction: column;
 }
