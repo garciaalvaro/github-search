@@ -13,6 +13,8 @@ The goal was to build it in a simple way. The project uses vanilla JavaScript an
 - It provides configuration files for **eslint** linter
 - Tests are included using **Jest**
 
+To see a reimplementation of this project built in TypeScript using React and Redux, please check [GitHub Search (React)](https://github.com/garciaalvaro/github-search-react).
+
 ---
 
 ## Getting Started
@@ -45,6 +47,12 @@ Install the project dependencies and start the server. From the root directory i
 ---
 
 ## Changelog
+
+#### 1.0.3
+
+- Improved styles
+- Fixed nav and h4 HTML tags not being closed correctly
+- Hide #pagination while waiting and loading data
 
 #### 1.0.2
 

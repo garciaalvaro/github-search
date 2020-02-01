@@ -34,7 +34,7 @@ export class Result extends HTMLElement {
 							href="${url}"
 							class="item__link"
 						>${user} / ${name}</a>
-					<h4>
+					</h4>
 				</header>
 
 				<section

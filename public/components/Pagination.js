@@ -77,7 +77,7 @@ export class Pagination extends HTMLElement {
 					class="btn btn--text btn--filled"
 					${next_disabled ? "disabled" : ""}
 				>Next</button>
-			<nav>
+			</nav>
 		`;
 	}
 }
