@@ -46,6 +46,12 @@ Install the project dependencies and start the server. From the root directory i
 
 ## Changelog
 
+#### 1.0.3
+
+- Improved styles
+- Fixed nav and h4 HTML tags not being closed correctly
+- Hide #pagination while waiting and loading data
+
 #### 1.0.2
 
 - Added favicon
