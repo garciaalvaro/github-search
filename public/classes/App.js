@@ -117,6 +117,8 @@ export class App {
 
 		this.$results.items = [];
 
+		this.$pagination.setAttribute("items_found", 0);
+
 		this.updateStatus("THROTTLE_PREPARE");
 
 		// If keywords has less than 3 characters do not continue
@@ -238,7 +240,6 @@ export class App {
 			this.page = 1;
 
 			this.$pagination.setAttribute("page", 1);
-			this.$pagination.setAttribute("items_found", 0);
 
 			this.updateResults();
 
