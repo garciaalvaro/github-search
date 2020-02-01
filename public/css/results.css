@@ -47,6 +47,7 @@
 	color: var(--color_02);
 }
 
+#pagination:empty,
 .item__license:empty,
 .item__language:empty,
 .item__updated:empty
@@ -64,6 +65,8 @@
 #pagination
 {
 	padding-top: 2em;
+	border-top: 1px solid var(--color_01);
+	margin-top: 2em;
 }
 
 #pagination span
