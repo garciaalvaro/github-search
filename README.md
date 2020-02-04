@@ -36,9 +36,13 @@ Install the project dependencies and start the server. From the root directory i
 - To stop the server run: `$ npm stop`
 - You may also run the server in development mode: `$ npm run server:dev`
 
+---
+
 ## Testing
 
 To run the provided tests, simply run: `$ npm test`
+
+---
 
 ## Docker
 
@@ -46,6 +50,8 @@ The project also comes with Docker configuration files, so it can be run using D
  - First make sure you have Docker installed
  - Run the command: `$ docker-compose up -d` which will download and install the dependencies and set up the container
  - Once finished, it will be available in http://localhost:3000
+
+---
 
 ## Screenshots
 
