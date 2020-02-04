@@ -5,6 +5,7 @@
 	"scripts": {
 		"server:dev": "pm2-dev start server.js",
 		"server:prod": "pm2 start server.js --name 'github-search'",
+		"server:docker": "pm2-runtime start server.js --name 'github-search'",
 		"server-stop:prod": "pm2 stop github-search",
 		"start": "npm run server:prod",
 		"stop": "npm run server-stop:prod",
