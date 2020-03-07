@@ -4,14 +4,14 @@
 
 This project is a simple app that provides a UI to search GitHub repositories using the [GitHub Search API](https://developer.github.com/v3/search/).
 
-The goal was to build it in a simple way. The project uses vanilla JavaScript and CSS. It is built for modern browsers and it makes use of APIs/features which are already available, such as Web Components, JavaScript modules and ES6. For these reasons it can be run as is, without a previous bundling step.
+The goal was to build it in a simple way. The project uses vanilla JavaScript and CSS. It is built for modern browsers and it makes use of APIs/features which are already available, such as Web Components, ES modules and ES6. For these reasons it can be run as is, without a previous bundling step.
 
 - **Vanilla JavaScript** (ES6) and CSS
-- Uses JavaScript modules
+- Uses ES modules
 - Uses **Web Components**
-- It provides a server using **Node.js** and **Express** on port 3000
-- It provides configuration files for **eslint** linter
-- Tests are included using **Jest**
+- Provides a server using **Node.js** and **Express** on port 3000
+- Provides configuration files for **eslint** linter
+- Includes tests using **Jest**
 
 To see a reimplementation of this project built in TypeScript using React and Redux, please check [GitHub Search (React)](https://github.com/garciaalvaro/github-search-react).
 
