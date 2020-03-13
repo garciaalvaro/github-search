@@ -1,12 +1,14 @@
 {
 	"name": "github-search",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"description": "Small app to search GitHub repositories",
 	"scripts": {
 		"server:dev": "pm2-dev start server.js",
 		"server:prod": "pm2 start server.js --name 'github-search'",
 		"server:docker": "pm2-runtime start server.js --name 'github-search'",
 		"server-stop:prod": "pm2 stop github-search",
+		"docker": "docker-compose up -d",
+		"docker-stop": "docker-compose down",
 		"start": "npm run server:prod",
 		"stop": "npm run server-stop:prod",
 		"test": "jest"
@@ -16,13 +18,13 @@
 		"pm2": "^4.2.3"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.8.3",
+		"@babel/core": "^7.8.7",
 		"@babel/plugin-transform-runtime": "^7.8.3",
-		"@babel/preset-env": "^7.8.3",
-		"@babel/runtime": "^7.8.3",
+		"@babel/preset-env": "^7.8.7",
+		"@babel/runtime": "^7.8.7",
 		"@skatejs/ssr": "^0.19.11",
 		"eslint": "^6.8.0",
-		"eslint-config-prettier": "^6.9.0",
+		"eslint-config-prettier": "^6.10.0",
 		"eslint-plugin-prettier": "^3.1.2",
 		"jest": "^25.1.0",
 		"prettier": "^1.19.1"
