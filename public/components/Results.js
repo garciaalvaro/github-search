@@ -60,9 +60,9 @@ export class Results extends HTMLElement {
 			.join("");
 
 		this.innerHTML = `
-			<ul class="list">
+			<ol class="list">
 				${html_list}
-			</ul>
+			</ol>
 		`;
 	}
 }
