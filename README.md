@@ -48,8 +48,9 @@ To run the provided tests, simply run: `$ npm test`
 
 The project also comes with Docker configuration files, so it can be run using Docker.
  - First make sure you have Docker installed
- - Run the command: `$ docker-compose up -d` which will download and install the dependencies and set up the container
+ - Run the command: `$ npm run docker` which will download and install the dependencies and set up the container
  - Once finished, it will be available in http://localhost:3000
+ - To stop the container run the command: `$ npm run docker-stop`
 
 ---
 
