@@ -1,3 +1,3 @@
 module.exports = {
-	testEnvironment: "@skatejs/ssr/jest"
+	testEnvironment: "@skatejs/ssr/jest",
 };

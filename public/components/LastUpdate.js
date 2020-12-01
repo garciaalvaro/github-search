@@ -13,7 +13,7 @@ export class LastUpdate extends HTMLElement {
 			this.dispatchEvent(
 				new CustomEvent("filterUpdated", {
 					bubbles: true,
-					detail: { value: e.target.value, prop_name: "last_update" }
+					detail: { value: e.target.value, prop_name: "last_update" },
 				})
 			);
 		});

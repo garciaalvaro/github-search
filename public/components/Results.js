@@ -41,7 +41,7 @@ export class Results extends HTMLElement {
 					stars,
 					language,
 					updated,
-					license
+					license,
 				}) => `
 					<li>
 						<gs-result

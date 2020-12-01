@@ -2,10 +2,9 @@
  * Layout
  */
 
-body
-{
+body {
 	font-family: Arial, sans-serif;
-	letter-spacing: .01em;
+	letter-spacing: 0.01em;
 	color: var(--color);
 	fill: var(--color_07);
 	background-color: var(--background_color);
@@ -13,8 +12,7 @@ body
 	line-height: 1.5;
 }
 
-#title
-{
+#title {
 	color: var(--color_07);
 	font-weight: normal;
 	font-size: 1em;
@@ -23,31 +21,27 @@ body
 	top: 0;
 	left: 0;
 	z-index: 1;
-	transition: color .15s ease;
+	transition: color 0.15s ease;
 }
 
-#title:hover
-{
+#title:hover {
 	color: var(--color);
 }
 
-#content
-{
+#content {
 	margin: 0 auto;
 	padding: 4rem;
 	width: 100%;
 	max-width: 50rem;
 }
 
-#container-search
-{
+#container-search {
 	position: relative;
 	padding: 6rem 0;
 	margin-top: -4rem;
 }
 
-#container-search:before
-{
+#container-search:before {
 	content: "";
 	position: absolute;
 	top: 0;
@@ -58,32 +52,27 @@ body
 	z-index: -1;
 }
 
-#container-filters
-{
+#container-filters {
 	padding: 2rem 0;
 	display: grid;
 	grid-gap: 2.5rem;
-	grid-template-columns: repeat( auto-fit, minmax( 130px, 1fr ) );
+	grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
 	border-bottom: 1px solid var(--color_01);
 	margin-bottom: 2em;
 }
 
-#languages
-{
-	margin: -.5em;
+#languages {
+	margin: -0.5em;
 	grid-column: span 2;
 }
 
-*::selection
-{
+*::selection {
 	color: var(--background_color);
 	background-color: var(--color_07);
 }
 
-@media screen and (max-width: 600px)
-{
-	#content
-	{
+@media screen and (max-width: 600px) {
+	#content {
 		padding: 3rem;
 	}
 }

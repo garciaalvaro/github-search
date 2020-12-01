@@ -2,54 +2,46 @@
  * Search
  */
 
-.container label + select
-{
+.container label + select {
 	margin-top: 1em;
 }
 
-.search__label
-{
+.search__label {
 	display: none;
 }
 
-.search__input
-{
+.search__input {
 	border: none;
 	outline: none;
-	border-bottom: .05em solid var(--color_07);
+	border-bottom: 0.05em solid var(--color_07);
 	width: 100%;
-	padding: .2em;
+	padding: 0.2em;
 	padding-right: 1.5em;
 	background-color: transparent;
 	font-size: inherit;
 }
 
-.search__button
-{
+.search__button {
 	margin-left: -1em;
 	padding: 0;
-	transition: fill .1s ease;
+	transition: fill 0.1s ease;
 }
 
-.search__button:hover
-{
+.search__button:hover {
 	fill: currentColor;
 }
 
-.search__button svg
-{
+.search__button svg {
 	width: 1em;
 	height: 1em;
 	pointer-events: none;
 }
 
-.search__input:focus
-{
-	border-bottom: .07em solid;
-	margin-bottom: -.02em;
+.search__input:focus {
+	border-bottom: 0.07em solid;
+	margin-bottom: -0.02em;
 }
 
-.search.search--big
-{
+.search.search--big {
 	font-size: 2.5em;
 }

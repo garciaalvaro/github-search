@@ -28,7 +28,7 @@ export class Pagination extends HTMLElement {
 			this.dispatchEvent(
 				new CustomEvent("pageUpdated", {
 					bubbles: true,
-					detail: page_updated
+					detail: page_updated,
 				})
 			);
 

@@ -9,7 +9,7 @@ export const sanitize = string => {
 		"/": "&#x2F;",
 		"<": "&lt;",
 		">": "&gt;",
-		"&": "&amp;"
+		"&": "&amp;",
 	};
 	const reg = /[&<>"'/]/gi;
 

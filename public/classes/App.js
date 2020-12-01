@@ -183,7 +183,7 @@ export class App {
 		if (!response.ok) {
 			return {
 				data: null,
-				too_many_requests: response.status === 403
+				too_many_requests: response.status === 403,
 			};
 		}
 
@@ -217,7 +217,7 @@ export class App {
 			this.min_stars ? `+stars:>${encode(this.min_stars)}` : "",
 
 			// Page
-			this.page > 1 ? `&page=${encode(this.page)}` : ""
+			this.page > 1 ? `&page=${encode(this.page)}` : "",
 		].join("");
 	}
 
