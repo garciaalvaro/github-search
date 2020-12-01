@@ -1,33 +1,40 @@
 {
 	"name": "github-search",
-	"version": "1.1.1",
+	"version": "1.2.0",
 	"description": "Small app to search GitHub repositories",
 	"scripts": {
+		"start": "npm run server:dev",
 		"server:dev": "pm2-dev start server.js",
-		"server:prod": "pm2 start server.js --name 'github-search'",
-		"server:docker": "pm2-runtime start server.js --name 'github-search'",
+		"server:prod": "pm2 start server.js --name \"github-search\"",
+		"server:docker": "pm2-runtime start server.js --name \"github-search\"",
 		"server-stop:prod": "pm2 stop github-search",
 		"docker": "docker-compose up -d",
 		"docker-stop": "docker-compose down",
-		"start": "npm run server:prod",
 		"stop": "npm run server-stop:prod",
-		"test": "jest"
+		"test": "npm run test:lint && npm run test:prettier && npm run test:unit",
+		"test:lint": "eslint \"**/*.{js,ts,tsx}\"",
+		"test:prettier": "prettier --check \"**/*.{js,css,html,json}\"",
+		"prettier": "prettier --write \"**/*.{js,css,html,json}\"",
+		"test:unit": "jest",
+		"test:unit:watch": "jest --watch",
+		"deploy": "gh-pages -d public"
 	},
 	"dependencies": {
 		"express": "^4.17.1",
-		"pm2": "^4.2.3"
+		"pm2": "^4.5.0"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.8.7",
-		"@babel/plugin-transform-runtime": "^7.8.3",
-		"@babel/preset-env": "^7.8.7",
-		"@babel/runtime": "^7.8.7",
+		"@babel/core": "^7.12.9",
+		"@babel/plugin-transform-runtime": "^7.12.1",
+		"@babel/preset-env": "^7.12.7",
+		"@babel/runtime": "^7.12.5",
 		"@skatejs/ssr": "^0.19.11",
-		"eslint": "^6.8.0",
-		"eslint-config-prettier": "^6.10.0",
-		"eslint-plugin-prettier": "^3.1.2",
-		"jest": "^25.1.0",
-		"prettier": "^1.19.1"
+		"eslint": "^7.14.0",
+		"eslint-config-prettier": "^6.15.0",
+		"eslint-plugin-prettier": "^3.1.4",
+		"gh-pages": "^3.1.0",
+		"jest": "^26.6.3",
+		"prettier": "^2.2.1"
 	},
 	"main": "server.js",
 	"author": "Alvaro Garcia",

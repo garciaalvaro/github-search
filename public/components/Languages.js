@@ -18,7 +18,7 @@ export class Languages extends HTMLElement {
 			"Ruby",
 			"Python",
 			"PHP",
-			"C#"
+			"C#",
 		];
 
 		this.addEventListener("click", e => {
@@ -32,8 +32,8 @@ export class Languages extends HTMLElement {
 					bubbles: true,
 					detail: {
 						value: language,
-						prop_name: "language"
-					}
+						prop_name: "language",
+					},
 				})
 			);
 

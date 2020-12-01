@@ -15,7 +15,7 @@ export class Keywords extends HTMLElement {
 			this.dispatchEvent(
 				new CustomEvent("filterUpdated", {
 					bubbles: true,
-					detail: { value: e.target.value, prop_name: "keywords" }
+					detail: { value: e.target.value, prop_name: "keywords" },
 				})
 			);
 		});
@@ -31,7 +31,7 @@ export class Keywords extends HTMLElement {
 			this.dispatchEvent(
 				new CustomEvent("filterUpdated", {
 					bubbles: true,
-					detail: { value: inputs[0].value, prop_name: "keywords" }
+					detail: { value: inputs[0].value, prop_name: "keywords" },
 				})
 			);
 		});

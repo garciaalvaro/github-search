@@ -14,7 +14,7 @@ export const prepareItems = (items = []) => {
 			stargazers_count,
 			language,
 			updated_at,
-			license
+			license,
 		}) => {
 			description = description || "";
 			name = name || "";
@@ -38,7 +38,7 @@ export const prepareItems = (items = []) => {
 				stars,
 				language,
 				updated,
-				license
+				license,
 			};
 		}
 	);
