@@ -36,7 +36,7 @@ Install the project dependencies and start the server. From the root directory i
 ### Notes
 
 - To stop the server run: `$ npm stop`
-- You may also run the server in development mode: `$ npm run server:dev`
+- You may also run the server in development mode: `$ npm run serve:dev`
 
 ---
 

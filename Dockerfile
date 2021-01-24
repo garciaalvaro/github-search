@@ -20,4 +20,4 @@ EXPOSE 3000
 
 # Run the npm script which will start the pm2 server (Docker version)
 # @see https://pm2.keymetrics.io/docs/usage/docker-pm2-nodejs/
-CMD [ "npm", "run", "server:docker" ]
+CMD [ "npm", "run", "serve:docker" ]
