@@ -12,8 +12,9 @@ The goal was to build it in a simple way. The project uses vanilla JavaScript an
 - Uses ES modules
 - Uses **Web Components**
 - Provides a server using **Node.js** and **Express** on port 3000
-- Provides configuration files for **eslint** linter
+- Includes **eslint** linter and **prettier** code formater
 - Includes tests using **Jest**
+- Includes configuration to be run in a **Docker** container
 
 To see a reimplementation of this project built in TypeScript using React and Redux, please check [GitHub Search (React)](https://github.com/garciaalvaro/github-search-react).
 
@@ -49,10 +50,11 @@ To run the provided tests, simply run: `$ npm test`
 ## Docker
 
 The project also comes with Docker configuration files, so it can be run using Docker.
- - First make sure you have Docker installed
- - Run the command: `$ npm run docker` which will download and install the dependencies and set up the container
- - Once finished, it will be available in http://localhost:3000
- - To stop the container run the command: `$ npm run docker-stop`
+
+- First make sure you have Docker installed
+- Run the command: `$ npm run docker` which will download and install the dependencies and set up the container
+- Once finished, it will be available in http://localhost:3000
+- To stop the container run the command: `$ npm run docker-stop`
 
 ---
 
