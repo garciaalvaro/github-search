@@ -27,7 +27,6 @@ export class LastUpdate extends HTMLElement {
 	render() {
 		this.innerHTML = `
 			<div class="container container--content-column">
-
 				<label for="last_update">Last update</label>
 
 				<select name="last_update" id="last_update">
@@ -39,7 +38,6 @@ export class LastUpdate extends HTMLElement {
 					<option value="last_2_years">Last 2 years</option>
 					<option value="last_3_years">Last 3 years</option>
 				</select>
-
 			</div>
 		`;
 	}

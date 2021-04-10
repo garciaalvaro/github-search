@@ -45,7 +45,6 @@ export class Keywords extends HTMLElement {
 	render() {
 		this.innerHTML = `
 			<div class="container search search--big">
-
 				<label
 					for="input"
 					class="search__label"
@@ -60,7 +59,6 @@ export class Keywords extends HTMLElement {
 				<button
 					class="search__button btn btn--icon"
 				>${icon_search}</button>
-
 			</div>
 		`;
 	}
