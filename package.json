@@ -17,8 +17,8 @@
 		"stop": "npm run server-stop:prod",
 		"test": "npm run test:lint && npm run test:prettier && npm run test:unit",
 		"test:lint": "eslint \"**/*.{js,ts,tsx}\"",
-		"test:prettier": "prettier --check \"**/*.{js,css,html,json}\"",
-		"prettier": "prettier --write \"**/*.{js,css,html,json}\"",
+		"test:prettier": "prettier --check \"**/*.{js,css,html,json,md}\"",
+		"prettier": "prettier --write \"**/*.{js,css,html,json,md}\"",
 		"test:unit": "jest",
 		"test:unit:watch": "jest --watch",
 		"deploy": "gh-pages -d public"
