@@ -20,6 +20,10 @@
 	margin: 0.7em 0;
 }
 
+.item__footer {
+	font-size: 0.95em;
+}
+
 .item:hover {
 	background-color: var(--color_01);
 }

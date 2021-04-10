@@ -27,7 +27,6 @@ export class MinStars extends HTMLElement {
 	render() {
 		this.innerHTML = `
 			<div class="container container--content-column">
-
 				<label for="stars">Minimum stars</label>
 
 				<select name="stars" id="stars">
@@ -39,7 +38,6 @@ export class MinStars extends HTMLElement {
 					<option value="50000">${(50000).toLocaleString()}</option>
 					<option value="100000">${(100000).toLocaleString()}</option>
 				</select>
-
 			</div>
 		`;
 	}

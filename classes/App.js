@@ -314,7 +314,7 @@ export class App {
 						id="pagination"
 						page="1"
 						items_found="0"
-					></gs-results>
+					></gs-pagination>
 				</div>
 			</main>
 		`;

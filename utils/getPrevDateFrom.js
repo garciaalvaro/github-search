@@ -1,6 +1,6 @@
 /**
  * Simple function to return a date in "YYYY-MM-DD" format,
- * from a given date back a certain amount time
+ * from a given date back a certain amount of time
  */
 export const getPrevDateFrom = (go_back = "last_week", from = new Date()) => {
 	const date = new Date(from);

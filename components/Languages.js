@@ -31,7 +31,9 @@ export class Languages extends HTMLElement {
 				new CustomEvent("filterUpdated", {
 					bubbles: true,
 					detail: {
-						value: language,
+						value: e.target.classList.contains("btn--is-active")
+							? ""
+							: language,
 						prop_name: "language",
 					},
 				})
